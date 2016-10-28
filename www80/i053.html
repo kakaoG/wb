@@ -1,0 +1,98 @@
+<div ng-include src="'menu.html'"></div>
+
+<div class="i053">
+    <input class="file" type="file" file-model="photo" style="display: none" id="0">
+    <div ng-show="lookImg" class="lookImg" ng-click="lookImg=false">
+        <img src="{{lookImg}}">
+    </div>
+    <div class="head">文章推送</div>
+    <p></p>
+    <div class="bgBox">
+        <div class="space_box">
+            <textarea class="form-control" rows="1" ng-model="article.title"
+                      placeholder="请在这里输入文章标题"></textarea>
+            <p style="text-align: right;margin-top: 5px">{{article.tips}}</p>
+            <div style="width:100%;position:relative">
+                <script id="editor" type="text/plain" style="width:100%;height:300px;"></script>
+                <div class="add_img" ng-click="openFile(0,'headImg')">在文章当前位置添加图片</div>
+            </div>
+            <div class="bianji">
+                <h3>发布样式编辑</h3>
+                <div class="fengmian">
+                    <span>封面上传：</span>
+                    <div class="img_container" ng-click="openFile(0,'fengmianImg')">
+                        图片大小：900*500<br>
+                        图片格式：JPEG/PNG
+                        <!--<img id="preview" ng-click="openFile(0,'headImg')">-->
+                        <img class="headImg" ng-src="{{fengmianImgSrc}}">
+                    </div>
+                </div>
+                <div class="zaiyao">
+                <textarea class="form-control" rows="4" ng-model="article.descMsg"
+                          placeholder="摘要：（选填，如果不填写则会抓取正文前54个字作为摘要）"></textarea>
+                    <p style="text-align: right;margin-top: 5px">{{article.descTips}}</p>
+                </div>
+            </div>
+            <p></p>
+
+            <hr class="featurette-divider">
+            <div style="text-align:center;">
+                <button type="button" class="btn btn-primary btn-lg btn_fasong" ng-click="preShow()">预览</button>
+                <button type="button" class="btn btn-primary btn-lg btn_fasong" ng-click="showSendData()">保存，并选择发送对象</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!--预览-->
+    <div class="preview_cls" id="preview_div">
+        <div class="article_div">
+            <h1>{{article.title}}</h1>
+            <p class="time">{{article.now_time}}</p>
+            <p class="content">摘要：{{article.descMsg}}</p>
+            <p id="essay" class="essay"></p>
+        </div>
+        <div class="preview_box">
+            <span class="preview_btn" ng-click="closePreview()">关闭</span>
+        </div>
+    </div>
+
+    <div class="i04_remind remind_info" id="send_remind">
+        <div class="a_row">
+            <span>目标平台</span>
+            <div class="btn-group" style="margin:0 0 0 30px;">
+                <button type="button" id="dLabel" class="btn btn-default dropdown-toggle sptf_item" ng-click="menu_info()">
+                    {{info.selectString}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" ng-show="show_menu_info" style="display:block;">
+                    <li><a ng-click="info.selectPlat(0)">全部</a></li>
+                    <li><a ng-click="info.selectPlat(1)">IOS</a></li>
+                    <li><a ng-click="info.selectPlat(2)">ANDROID</a></li>
+                    <li><a ng-click="info.selectPlat(3)">WEB</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="a_row">
+            <span>用户地区</span>
+            <input type="text" class="form-control diqubox sptf_item" id="cityChoice" ng-model="info.provinceCity">
+        </div>
+        <div class="a_row">
+            <span>发送时间</span>
+            <button type="button" class="btn btn-default sptf_item" ng-class="{'send_select':info.sendType==0}"
+                    ng-click="info.setSendType(0)" style="margin-left: 30px">立即发送
+            </button>
+            <button type="button" class="btn btn-default sptf_item" ng-class="{'send_select':info.sendType==1}"
+                    ng-click="info.setSendType(1)">定时发送
+            </button>
+            <div style="display: inline-block" ng-show="info.sendType==1" class="show_time">
+                <input type="text" id="sendTime" ng-model="info.push_time" class="i04_list search_date" style="width:170px;">
+            </div>
+        </div>
+        <div class="i04_btn_box">
+            <span class="i04_btn not" ng-click="cancelSend()">取消</span>
+            <span class="i04_btn yes" ng-click="sendData()">发送</span>
+        </div>
+    </div>
+
+</div>

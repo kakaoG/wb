@@ -1,0 +1,242 @@
+
+<div ng-include src="'menu.html'"></div>
+
+<div class="i022">
+
+    <!-- 抬头-->
+    <div class="title">
+
+        <button ng-click="openDatePicker()" class="btn1">
+            <p style="float: left">日期选择:</p>
+            {{selectedDate}}
+            <img src="img/down.png" style="float: right;padding-top: 3px;">
+        </button>
+        <p>登录统计/活跃统计</p>
+        <div class="datePicker" ng-show="showDatePicker">
+            <div class="date">
+                <button ng-click="slectedDate(0)" style="border-left: 1px solid #cccccc">今天</button>
+                <button ng-click="slectedDate(1)">昨日</button>
+                <button ng-click="slectedDate(2)">近7日</button>
+                <button ng-click="slectedDate(3)">近30日</button>
+                <button ng-click="slectedDate(4)">全部</button>
+            </div>
+            <div class="picker">
+                <span>自定</span>
+                <div class="selectBox">
+                    <input id="jqueryPicker" ng-model="startDate"/>
+                    <img src="img/date.png">
+                </div>
+                <span>到</span>
+                <div class="selectBox">
+                    <input id="jqueryPicker1" ng-model="endDate"/>
+                    <img src="img/date.png">
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="enter">
+                <button style="float: left;color: rgb(45,141,214)" ng-click="enter()">确定</button>
+                <div style="height: 20px;width: 1px;float: left;background-color: #cccccc;margin-left: 25px"></div>
+                <button style="float: right;color: #444" ng-click="cancel()">取消</button>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="box">
+        <div class="row" ng-show="showTable">
+            <table class="table table-hover" id="bootstrap-table">
+                <thead>
+
+
+                <tr class="headerTH">
+                    <th style="border-bottom: none;border-right: 1px solid #cccccc">日期</th>
+                    <th></th>
+                    <th></th>
+                    <th>注册登录</th>
+                    <th></th>
+                    <th style="border-right: 1px solid #cccccc"></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>充值付费</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <!--<th></th>-->
+                    <th style="border-right: 1px solid #cccccc"></th>
+
+                    <th></th>
+                    <th>在线</th>
+                    <th></th>
+                    <th style="border-right: 1px solid #cccccc"></th>
+
+                    <th></th>
+                    <th>活跃</th>
+                    <th></th>
+                    <th style="border-right: 1px solid #cccccc"></th>
+
+                    <th></th>
+                    <th>流失</th>
+                    <th></th>
+                    <th style="border-right: 1px solid #cccccc"></th>
+                </tr>
+                <tr>
+                    <th style="border-top: none;"></th>
+                    <th>日新增用户数(位)</th>
+                    <th>日活跃用户数(位)</th>
+                    <th>次日留存率</th>
+                    <th>三日留存率</th>
+                    <th>七日留存率</th>
+
+                    <!--<th>新增付费率</th>-->
+                    <th>累计付费用户</th>
+                    <th>用户充值</th>
+                    <th>平台赠送</th>
+                    <th>用户消费</th>
+                    <th>代币存量</th>
+                    <th>日付费用户</th>
+                    <th>ARPU</th>
+                    <th>ARPPU</th>
+                    <th>付费率</th>
+                    <!--<th>新增用户付费率</th>-->
+                    <th>总体用户付费率</th>
+
+                    <!--<th>平均在线人数</th>-->
+                    <th>峰值在线</th>
+                    <th>峰值时刻</th>
+                    <th>平均在线时长</th>
+
+                    <th>DAU</th>
+                    <th>WAU</th>
+                    <th>MAU</th>
+                    <th>活跃付费账户</th>
+
+                    <th>日流失</th>
+                    <th>单周流失</th>
+                    <th>双周流失</th>
+                    <th>流失率</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="m in model">
+                    <td >{{m.date}}</td>
+                    <td >{{m.register_num}}</td>
+                    <td >{{m.active_num}}</td>
+                    <td >{{m.second_hold_percent}}%</td>
+                    <td >{{m.three_hold_percent}}%</td>
+                    <td >{{m.seven_hold_percent}}%</td>
+
+                    <!--<td >{{m.new_gold_num}}%</td>-->
+                    <td >{{m.total_gold_num}}</td>
+                    <td >{{m.day_gold_num}}</td>
+                    <td >{{m.give_gold_num}}</td>
+                    <td >{{m.total_pay_num}}</td>
+                    <td >{{m.left_gold_num}}</td>
+                    <td >{{m.day_pay_num}}</td>
+                    <td >{{m.ARPU}}</td>
+                    <td >{{m.ARRPU}}</td>
+                    <td >{{m.pay_percent}}%</td>
+                    <!--<td >{{m.new_pay_percent}}%</td>-->
+                    <td >{{m.total_pay_percent}}%</td>
+
+                    <!--<td >{{m.average_hold_num}}</td>-->
+                    <td >{{m.top_hold_num}}</td>
+                    <td >{{m.top_hold_time}}</td>
+                    <td >{{m.average_hold_time}}</td>
+
+                    <td >{{m.DAU}}</td>
+                    <td >{{m.WAU}}</td>
+                    <td >{{m.MAU}}</td>
+                    <td >{{m.APA}}</td>
+
+                    <td >{{m.day_lost_num}}</td>
+                    <td >{{m.one_week_lost_num}}</td>
+                    <td >{{m.two_week_lost_num}}</td>
+                    <td >{{m.lost_percent}}%</td>
+                </tr>
+
+                <tr>
+                    <td >总和均值</td>
+                    <td >总和:{{sum.register_num}}</td>
+                    <td >均值:{{sum.active_num}}</td>
+                    <td >均值:{{sum.second_hold_percent}}%</td>
+                    <td >均值:{{sum.three_hold_percent}}%</td>
+                    <td >均值:{{sum.seven_hold_percent}}%</td>
+
+                    <td ></td>
+                    <td >总和:{{sum.day_gold_num}}</td>
+                    <td >总和:{{sum.give_gold_num}}</td>
+                    <td >总和:{{sum.total_pay_num}}</td>
+                    <td ></td>
+                    <td >均值:{{sum.day_pay_num}}</td>
+                    <td >均值:{{sum.ARPU}}</td>
+                    <td >均值:{{sum.ARRPU}}</td>
+                    <td >均值:{{sum.pay_percent}}%</td>
+
+                    <!--<td >均值:{{sum.new_pay_percent}}%</td>-->
+                    <td ></td>
+
+                    <!--<td ></td>-->
+                    <td >均值:{{sum.top_hold_num}}</td>
+                    <td ></td>
+                    <td >均值:{{sum.average_hold_time}}</td>
+
+                    <td >均值:{{sum.DAU}}</td>
+                    <td >均值:{{sum.WAU}}</td>
+                    <td >均值:{{sum.MAU}}</td>
+                    <td >均值:{{sum.APA}}</td>
+
+                    <td >均值:{{sum.day_lost_num}}</td>
+                    <td >均值:{{sum.one_week_lost_num}}</td>
+                    <td >均值:{{sum.two_week_lost_num}}</td>
+                    <td >均值:{{sum.lost_percent}}%</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="tableFooter">
+                <div class="select2">
+                    <div class="select1">
+                        <select ng-model="type1" ng-change="changePage(type1)">
+                            <option selected="selected" value="10">10</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="switch">
+                    <button ng-click="switch()">{{switchType}}</button>
+                </div>
+                <div class="page">
+                    <div class="left" ng-click="up()" ng-class="{disabled:(page == 1)}">
+                        <img style="height: 60%" src="img/arrow_right.png">
+                    </div>
+                    <div class="input">
+                        <input type="text" ng-model="page"><span>/{{allPage}}</span>
+                    </div>
+                    <div class="right" ng-click="next()" ng-class="{disabled:(allPage == page)}">
+                        <img style="height: 60%" src="img/arrow_right1.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="!showTable">
+            <div class="line" >
+                <div class="type" id="queryType">
+                    <button class="btn selectBtn" ng-click="selectBtn(0)">注册登录</button>
+                    <button class="btn" ng-click="selectBtn(1)">充值付费</button>
+                    <button class="btn" ng-click="selectBtn(2)">在线</button>
+                    <button class="btn" ng-click="selectBtn(3)">活跃</button>
+                    <button class="btn" ng-click="selectBtn(4)">流失</button>
+                </div>
+            </div>
+            <div>
+                <div id="jqChart" style="width: 800px; height: 300px;"></div>
+            </div>
+            <div class="switch" style="margin-top: 10px;">
+                <button ng-click="switch()">{{switchType}}</button>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

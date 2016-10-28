@@ -1,0 +1,237 @@
+<div ng-include src="'menu.html'"></div>
+
+<div class="i011">
+    <div class="nav1 clearfix">
+        <span class="{{navi==0?'active':''}}" ng-click="gonav(0)">地图物品管理记录</span>
+        <span class="{{navi==1?'active':''}}" ng-click="gonav(1)">商店物品管理记录</span>
+        <span class="{{navi==2?'active':''}}" ng-click="gonav(2)">精灵物品管理记录</span>
+        <span class="{{navi==3?'active':''}}" ng-click="gonav(3)">基金库物品管理记录</span>
+    </div>
+
+    <div ng-show="navi==0">
+        <div class="content3 clearfix">
+            <select ng-model="table1fix.state">
+                <option value="">状态</option>
+                <option value="run">进行中</option>
+                <option value="hide">隐藏</option>
+                <option value="delete">已消除</option>
+            </select>
+            <select ng-model="table1fix.type">
+                <option value="">查询类型</option>
+                <option value="DGT_name">商品库名称</option>
+                <option value="DGT_id">商品库ID</option>
+                <option value="admin_name">管理员名称</option>
+                <option value="admin_id">管理员ID</option>
+            </select>
+            <span class="search">
+            <input type="text" placeholder="请输入值" ng-model="table1fix.key">
+            <button ng-click="setTable1()">查询</button>
+         </span>
+        </div>
+        <table class="table table-bordered table-striped">
+            <tr>
+            <tr>
+                <td>修改时间</td>
+                <td>商圈名称</td>
+                <td>商圈ID</td>
+                <td>选择商品库</td>
+                <td>状态</td>
+                <td>操作管理员</td>
+                <td>操作</td>
+            </tr>
+            </tr>
+            <tr ng-repeat="x in data1.result">
+                <td>{{getdate(x.ut)}}</td>
+                <td>{{x.circle_name}}</td>
+                <td>{{x.circle_id}}</td>
+                <td><span ng-repeat="(key,value) in x.lists">{{key}}:{{value}}<br/></span></td>
+                <td>{{x.status=='run'?'进行中':(x.status=='hide'?'隐藏中':'已消除')}}</td>
+                <td>{{x.admin_name}}</td>
+                <td><span ng-repeat="(key,value) in x.records">{{key}}:{{value}}%<br/></span></td>
+            </tr>
+        </table>
+        <div class="content4">
+            <select class="ff" style="margin-right: 0"  ng-model="table1fix.page_size" ng-change="setTable1()">
+                <option ng-value="10" ng-selected="true">10</option>
+                <option ng-value="30">30</option>
+            </select>
+            <span class="ff text1">条</span>
+            <span class="down " ng-click="export_xlsx1()"></span>
+            <span class="fr">
+        <span class="left {{table1fix.page_num>1?'active':''}}" ng-click="left1(table1fix.page_num>1)"></span>
+        <input type="text " ng-model="table1fix.page_num">
+        <span class="text">/{{data1.total_page}}</span>
+        <span class="right {{table1fix.page_num<data1.total_page?'active':''}}" ng-click="right1(table1fix.page_num<data1.total_page)"></span>
+    </span>
+        </div>
+    </div>
+
+
+    <div ng-show="navi==1">
+        <div class="content3 clearfix">
+            <select>
+                <option value="0">状态</option>
+                <option value="1">进行中</option>
+                <option value="2">隐藏中</option>
+            </select>
+            <select>
+                <option value="0">查询类型</option>
+                <option value="1">商圈名称</option>
+                <option value="2">商圈ID</option>
+                <option value="3">商品库名称</option>
+                <option value="4">商品库ID</option>
+                <option value="5">管理员名称</option>
+                <option value="6">管理员ID</option>
+            </select>
+            <span class="search">
+            <input type="text" placeholder="请输入值">
+            <button>查询</button>
+         </span>
+        </div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>修改时间</td>
+                <td>商圈名称</td>
+                <td>商圈ID</td>
+                <td>店主星座类型</td>
+                <td>选择的商品库</td>
+                <td>状态</td>
+                <td>操作管理员</td>
+                <td>操作</td>
+            </tr>
+            <tr ng-repeat="x in i011.table">
+                <td>{{x.time}}</td>
+                <td>{{x.name}}</td>
+                <td>{{x.id}}</td>
+                <td>
+                    <div ng-repeat="y in x.pre">{{y}}</div>
+                </td>
+                <td>{{x.state==1?'进行中':'隐藏中'}}</td>
+                <td>{{x.admin}}</td>
+                <td>
+                    <div ng-repeat="y in x.caozuo">{{y}}</div>
+                </td>
+            </tr>
+        </table>
+        <div class="content4">
+            <select class="ff" style="margin-right: 0"  >
+                <option value="10">10</option>
+                <option value="30">30</option>
+            </select>
+            <span class="ff text1">条</span>
+
+            <span class="down " ng-click="export_xlsx2()"></span>
+            <span class="fr">
+        <span class="left "></span>
+        <input type="text ">
+        <span class="text">/10</span>
+        <span class="right "></span>
+    </span>
+        </div>
+    </div>
+
+
+    <div ng-show="navi==2">
+        <div class="content3 clearfix">
+            <select ng-model="table3fix.type">
+                <option value="">查询类型</option>
+                <option value="DGT_name">商品库名称</option>
+                <option value="DGT_id">商品库ID</option>
+                <option value="admin_name">管理员名称</option>
+                <option value="admin_id">管理员ID</option>
+            </select>
+            <span class="search">
+            <input type="text" placeholder="请输入值" ng-model="table3fix.key">
+            <button ng-click="setTable3()">查询</button>
+         </span>
+        </div>
+        <table class="table table-bordered table-striped">
+            <tr>
+            <tr>
+                <td>修改时间</td>
+                <td>选择的商品库</td>
+                <td>操作管理员</td>
+                <td>操作</td>
+            </tr>
+            </tr>
+            <tr ng-repeat="x in data3.result">
+                <td>{{getdate(x.ut)}}</td>
+                <td><span ng-repeat="(key,value) in x.lists">{{key}}:{{value}}%<br/></span></td>
+                <td>{{x.admin_name}}</td>
+                <td><span ng-repeat="(key,value) in x.records">{{key}}:{{value}}%<br/></span></td>
+            </tr>
+        </table>
+        <div class="content4">
+            <select class="ff" style="margin-right: 0"  ng-model="table3fix.page_size" ng-change="setTable3()">
+                <option ng-value="10" ng-selected="true">10</option>
+                <option ng-value="30">30</option>
+            </select>
+            <span class="ff text1">条</span>
+            <span class="down " ng-click="export_xlsx3()"></span>
+            <span class="fr">
+        <span class="left {{table3fix.page_num>1?'active':''}}" ng-click="left3(table3fix.page_num>1)"></span>
+        <input type="text " ng-model="table3fix.page_num">
+        <span class="text">/{{data3.total_page}}</span>
+        <span class="right {{table3fix.page_num<data3.total_page?'active':''}}" ng-click="right3(table3fix.page_num<data3.total_page)"></span>
+    </span>
+        </div>
+    </div>
+
+
+
+    <div ng-show="navi==3">
+        <div class="content3 clearfix">
+            <select ng-model="table4fix.type">
+                <option value="">查询类型</option>
+                <option value="circle_name">商圈名称</option>
+                <option value="circle_id">商圈ID</option>
+                <option value="goods_name">商品名称</option>
+                <option value="goods_id">商品ID</option>
+                <option value="admin_name">管理员名称</option>
+                <option value="admin_id">管理员ID</option>
+            </select>
+            <span class="search">
+            <input type="text" placeholder="请输入值" ng-model="table4fix.key">
+            <button ng-click="setTable4()">查询</button>
+         </span>
+        </div>
+        <table class="table table-bordered table-striped">
+            <tr>
+            <tr>
+                <td>投放时间</td>
+                <td>商圈名称</td>
+                <td>商圈ID</td>
+                <td>投放物品名称</td>
+                <td>投放物品ID</td>
+                <td>物品价值</td>
+                <td>操作管理员</td>
+            </tr>
+            </tr>
+            <tr ng-repeat="x in data4.result">
+                <td>{{getdate(x.put_time)}}</td>
+                <td>{{x.circle_name}}</td>
+                <td>{{x.circle_id}}</td>
+                <td>{{x.goods_name}}</td>
+                <td>{{x.goods_id}}</td>
+                <td>{{x.price}}</td>
+                <td>{{x.admin_name}}</td>
+            </tr>
+        </table>
+        <div class="content4">
+            <select class="ff" style="margin-right: 0"  ng-model="table4fix.page_size" ng-change="setTable4()">
+                <option ng-value="10" ng-selected="true">10</option>
+                <option ng-value="30">30</option>
+            </select>
+            <span class="ff text1">条</span>
+            <span class="down " ng-click="export_xlsx4()"></span>
+            <span class="fr">
+        <span class="left {{table4fix.page_num>1?'active':''}}" ng-click="left4(table4fix.page_num>1)"></span>
+        <input type="text " ng-model="table4fix.page_num">
+        <span class="text">/{{data4.total_page}}</span>
+        <span class="right {{table4fix.page_num<data4.total_page?'active':''}}" ng-click="right4(table4fix.page_num<data4.total_page)"></span>
+    </span>
+        </div>
+    </div>
+
+
+</div>

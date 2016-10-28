@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <title>KO门后台</title>
+    <link href="css/index.css" rel="stylesheet"/>
+    <link href="css/rolenum.css" rel="stylesheet"/>
+    <link href="css/exchangebus.css" rel="stylesheet"/>
+    <link href="css/exchangeshop.css" rel="stylesheet"/>
+    <link href="css/exchange_additem.css" rel="stylesheet"/>
+    <link href="css/exchange_item.css" rel="stylesheet"/>
+    <link href="css/exchange_edit.css" rel="stylesheet"/>
+    <link href="css/yingkui_110.css" rel="stylesheet"/>
+    <link href="css/yingkui_111.css" rel="stylesheet"/>
+    <link href="css/yingkui_112.css" rel="stylesheet"/>
+    <link href="css/yingkui_113.css" rel="stylesheet"/>
+    <link href="css/yingkui_114.css" rel="stylesheet"/>
+    <link href="css/yingkui_115.css" rel="stylesheet"/>
+    <link href="css/yingkui_116.css" rel="stylesheet"/>
+</head>
+<body>
+    <div id="game">
+        <div id="bottom_left">
+           <div id="logo">LOGO</div>
+            <ul id="bottom_left_ul">
+            <li data-type="cangku" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_shop.png" class="img1">
+                    <span>在线人数</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="rolenum"  onclick1='location.href="arserver/index.html#rolenum"'><span>在线人数管理</span></li>
+                </ul>
+            </li>
+
+            <li data-type="cangku" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_shop.png" class="img1">
+                    <span>商品管理</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="exchangebus"  onclick1='location.href="arserver/index.html#exchangebus"'><span>兑换商管理</span></li>
+
+                    <li data-type="exchangeshop"  onclick1='location.href="arserver/index.html#exchangeshop"'><span>商品兑换</span></li>
+
+<!--                    <li data-type="exchange_item"  onclick1='location.href="arserver/index.html#exchange_item"'><span>兑换实体商品</span></li>-->
+
+                    <li data-type="rcsp"><span onclick="goto_view('i041')">日常商品库</span></li>
+                    <li data-type="spml"><span onclick="goto_view('i040')">商品目录（总库）</span></li>
+                    <li data-type="xydk"><span onclick="goto_view('i042')">幸运蛋库</span></li>
+<li data-type="tongji_huizong" onclick1='location.href="arserver/index.html#tongji_huizong"'><span>兑换汇总</span></li>
+
+                </ul>
+            </li>
+            <li data-type="yingkuichi" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_statistics.png" class="img1">
+                    <span>奖池管理</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="xwc" onclick="goto_view('i120')"><span>行为池</span></li>
+                    <li data-type="yingkui_110" onclick1='location.href="arserver/index.html#yingkui_110"'><span>盈亏池</span></li>
+                    <li data-type="jijin_130" onclick1='location.href="arserver/index.html#jijin_130"'><span>基金池</span></li>
+                </ul>
+            </li>
+            <li data-type="toufangguanli" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_put.png" class="img1">
+                    <span>投放管理</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="sptf_jl" onclick="goto_view('i010')"><span>商品投放</span></li>
+                    <li data-type="gl_jl" onclick="goto_view('i011')"><span>管理记录</span></li>
+                    <li data-type="wptf"  onclick="goto_view('i012')"><span>5号碎片投放记录</span></li>
+                    <li data-type="qbtf_jl" onclick="goto_view('i200')"><span>钱包投放管理</span></li>
+                </ul>
+            </li>
+            <li data-type="zonghetongji" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_statistics.png" class="img1">
+                    <span>综合统计</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                   <li data-type="role_tx" onclick="goto_view('i020')"><span>用户特性分析</span></li>
+                    <li data-type="role_xx" onclick="goto_view('i021')"><span>用户信息查询</span></li>
+                    <li data-type="role_zh" onclick="goto_view('i022')"><span>综合数据统计</span></li>
+                    <li data-type="scdjtj"  onclick="goto_view('i023')"><span>商城道具统计</span></li>
+                    <li data-type="tongji_dengji" onclick1='location.href="arserver/index.html#tongji_dengji"'><span>用户等级统计</span></li>
+                    <li data-type="tongji_chongzhi" onclick1='location.href="arserver/index.html#tongji_chongzhi"'><span>用户充值统计</span></li>
+                </ul>
+            </li>
+            <li data-type="huodongguanli" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_put.png" class="img1">
+                    <span>活动管理</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="hd_dxxts" onclick="goto_view('i051')"><span>短消息推送</span></li>
+                    <li data-type="hd_wztd" onclick="goto_view('i053')"><span>文章推送</span></li>
+                    <li data-type="hd_tsjl"  onclick="goto_view('i052')"><span>推送记录</span></li>
+                </ul>
+            </li>
+            <li data-type="huodongguanli" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_put.png" class="img1">
+                    <span>福利发放</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="hd_dxxts" onclick="goto_view('i061')"><span>发放记录</span></li>
+                    <li data-type="hd_wztd" onclick="goto_view('i060')"><span>发放管理</span></li>
+                    <li data-type="hd_wztd" onclick="goto_view('i062')"><span>活动福利发放</span></li>
+                </ul>
+            </li>
+            
+            <li>
+                <div>
+                    <div class="line"></div>
+                </div>
+            </li>
+            </ul>
+            <div class="share_pop"></div>
+        </div>
+        <div id="gamebottom">
+            <div id="gametop">
+                <div id="top_break">退出登录</div>
+            </div>
+            <div id="gamebottomdiv"></div>
+        </div>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script src="js/APIConnection.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/server.js"></script>
+<script src="js/util.js"></script>
+<script src="js/rolenum.js"></script>
+<script src="js/exchangebus.js"></script>
+<script src="js/exchangeshop.js"></script>
+<script src="js/exchange_additem.js"></script>
+<script src="js/exchange_item.js"></script>
+<script src="js/exchange_edit.js"></script>
+<script src="js/yingkui_110.js"></script>
+<script src="js/yingkui_111.js"></script>
+<script src="js/yingkui_112.js"></script>
+<script src="js/yingkui_113.js"></script>
+<script src="js/yingkui_114.js"></script>
+<script src="js/yingkui_115.js"></script>
+<script src="js/yingkui_116.js"></script>
+<script src="js/yingkui_117.js"></script>
+<script src="js/jijin_130.js"></script>
+<script src="js/jijin_131.js"></script>
+<script src="js/jijin_132.js"></script>
+<script src="js/jijin_133.js"></script>
+<script src="js/tongji_dengji.js"></script>
+<script src="js/tongji_chongzhi.js"></script>
+<script src="js/tongji_huizong_num.js"></script>
+<script src="js/tongji_huizong.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/index.js"></script>
+</html>

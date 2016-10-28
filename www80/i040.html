@@ -1,0 +1,277 @@
+<div ng-include src="'menu.html'"></div>
+<div class="i040 i04">
+    <input class="file" type="file" file-model="photo" style="display: none" id="0">
+    <div ng-show="lookImg" class="lookImg" ng-click="lookImg=false">
+        <img src="{{lookImg}}">
+    </div>
+	<div class="i04_title">商品目录</div>
+    <!--搜索栏-->
+    <div class="search">
+        <input type="text" id="startTime" ng-model="startTime" class="i04_list search_date" placeholder="开始日期">
+        <input type="text" id="endTime" ng-model="endTime" class="i04_list search_date" placeholder="结束日期" >
+        <div class="i04_list search_type" ng-click="showList01()">
+        	<span>{{searchTypeMenu}}</span>
+        	<ul class="i04_show type_list" id="type_list_menu">
+            	<li>商品名称</li>
+            	<li>商品ID</li>
+            	<li>兑换商名称</li>
+            	<li>兑换商ID</li>
+            	<li>商品价格区间</li>
+            </ul>
+        </div>
+        <input type="search" placeholder="输入内容搜索" class="i04_search_box" ng-model="goods_input" ng-show="searchTypeMenu!='商品价格区间'">
+        <div ng-show="searchTypeMenu=='商品价格区间'" style="float:left;">
+            <input type="search" class="i04_search_box1" ng-model="goods_input1">
+            <span>-</span>
+            <input type="search" class="i04_search_box2" ng-model="goods_input2">
+        </div>
+        <span class="i04_search_btn" ng-click="goods_search()">查询</span>
+        <div class="i04_queryall_btn" ng-click="goods_search_all()">
+        	显示全部
+        </div>
+        <div class="i04_big_btn" ng-click="menuEdit()">
+        	添加新商品
+        </div>
+    </div>
+    <!--商品目录表格-->
+    <table class="table table-bordered table-striped table-responsive menu_table" id="menu_table">
+    	<thead>
+        	<tr>
+                <th ng-click="sort_way('ut')" class="{{ut_sort}}">修改日期</th>
+            	<th>商品名称</th>
+            	<th>商品ID</th>
+                <th class="{{price_sort}}" ng-click="sort_way('price')">商品价格</th>
+                <th class="{{init_price_sort}}" ng-click="sort_way('init_price')">商品成本价</th>
+                <th>兑换商名称</th>
+                <th>商品简介</th>
+                <th>兑换方式</th>
+                <th>已投放的碎片(个)</th>
+                <th>最低可视等级</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr ng-show="addGoodsData.result.length==0">
+            <td colspan="11">当前无符合条件数据</td>
+        </tr>
+        <tr ng-repeat="x in addGoodsData.result">
+            <td>{{x.ut*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td>{{x.goods_name}}</td>
+            <td>{{x.goods_id}}</td>
+            <td>¥{{x.price}}</td>
+            <td>¥{{x.init_price}}</td>
+            <td>{{x.merchant_name}}</td>
+            <td>{{x.introduce}}</td>
+            <td>{{getExchgeName(x.exchge_way)}}</td>
+            <td>
+                <span ng-repeat="(key,val) in x.piece_list" class="tab_span">{{key}}号：{{val}}, </span>
+                <span class="i40_span_btn" ng-click="showSuipian(x.goods_id)">查看去向</span>
+            </td>
+            <td>{{x.min_visible_lv}}</td>
+            <td>
+                <span class="i40_table_btn" ng-click="editGoods(x)">编辑商品</span>
+                <span class="i40_table_btn" ng-click="shangjia(x.goods_id)" ng-if="x.status!='up'">上架</span>
+                <span style="color:#999;" ng-if="x.status=='up'" title="已上架">上架</span>
+                <span class="i40_table_btn" ng-click="xiajia(x.goods_id)" ng-if="x.status!='down'">下架</span>
+                <span style="color:#999;" ng-if="x.status=='down'" title="已下架">下架</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>  
+    <!--页面跳转栏-->  
+    <div class="con">
+    	<div class="i04_dol">
+            <div class="i04_list dol_num" ng-click="showList02()">
+                <span>{{dolListMenu}}</span>
+                <ul class="i04_show dol_list" id="dol_list_menu">
+                    <li>10</li>
+                    <li>30</li>
+                </ul>
+            </div>
+            <span class="tiao">条</span>
+            <div class="dol_btn" ng-click="export_xlsx()"></div>
+        </div>
+        <div class="i04_change_page">
+            <div class="i04_return_btn" ng-show="goods_pageNumber!=1" ng-click="goods_prev()"></div>
+            <div class="i04_return_btn_no" ng-show="goods_pageNumber==1"></div>
+            <input type="text" ng-model="goods_pageNumber" class="page">
+            <span>
+            /<span class="page_num">{{addGoodsData.total_page}}</span>
+            </span>
+            <div class="i04_go_btn" ng-show="goods_pageNumber<addGoodsData.total_page" ng-click="goods_next()"></div>
+            <div class="i04_go_btn_no" ng-show="goods_pageNumber==addGoodsData.total_page"></div>
+        </div>
+    </div>
+    <!--下架提示-->
+    <div class="i04_remind xiajia" id="xiajia_remind">
+    	<h3>温馨提示</h3>
+        <p>是否下架该产品？</p>
+        <div class="i04_btn_box">
+        	<span class="i04_btn not" ng-click="xiajiaNot()">取消</span>
+        	<span class="i04_btn yes" ng-click="xiajiaYes()">确定</span>
+        </div>
+    </div>
+    <!--上架提示-->
+    <div class="i04_remind shangjia" id="shangjia_remind">
+    	<h3>温馨提示</h3>
+        <p>是否上架该产品？</p>
+        <div class="i04_btn_box">
+        	<span class="i04_btn not" ng-click="shangjiaNot()">取消</span>
+        	<span class="i04_btn yes" ng-click="shangjiaYes()">确定</span>
+        </div>
+    </div>
+    <!--商品编辑页面-->
+    <div class="i04_edit menu_edit" id="menu_edit" ng-hide="sureGiveup">
+    	<h2>商品目录商品编辑</h2>
+        <ul class="edit_list">
+        	<li>
+                <span class="type">商品名称:</span>
+                <input type="text" class="contain" ng-model="newName">
+            </li>
+        	<li>
+                <span class="type">价格:</span>
+                <input type="text" class="contain" ng-model="newPrice">
+            </li>
+        	<li>
+                <span class="type">成本价:</span>
+                <input type="text" class="contain" ng-model="newInitPrice">
+            </li>
+        	<li>
+                <span class="type">商品介绍:</span>
+                <input type="text" class="contain" ng-model="newIntroduce">
+            </li>
+        	<li>
+                <span class="type">兑换方式:</span>
+                <div class="i04_list exchange " ng-click="showList03()">
+                	<span>{{exchangeName}}</span>
+                	<ul class="i04_show exchange_list" id="exchange_list_edit">
+                    	<li>邮寄</li>
+                    	<li>实体店</li>
+                    	<li>团购券</li>
+                    </ul>
+                </div>
+                <span class="lowest">最低可视等级：</span> 
+                <input type="text" class="lowest_num" ng-model="newMinVisibleLv">
+            </li>
+        	<li>
+                <span class="type">兑换商:</span>
+                <input type="text" class="contain" ng-model="newMerchantName" ng-click="changeMerchantName(0,5)">
+            </li>
+        	<li>
+                <span class="type">商品图片:</span>
+<!--
+                <input type="file" class="pic_file" accept="image/png,image/jpeg" id="file_upload" ng-click="choose_pic()" ng-model="newImageFid">
+-->
+                <div class="img_container" ng-click="openFile(0,'headImg')">
+                    <div id="img_text">
+                        图片大小：600＊600<br>
+                        图片格式：JPEG/PNG
+                    </div>
+                    <img class="headImg" ng-src="{{showImgSrc}}">
+                </div>
+            </li>
+        </ul>
+        <div class="i04_btn_box">
+        	<span class="i04_btn not" ng-click="giveupSave()">放弃</span>
+            <span class="i04_btn yes" ng-click="addGoods()">保存</span>
+        </div>
+        <div class="i04_remind giveup_save" id="giveup_save" ng-hide="cancelCan">
+            <h3>温馨提示</h3>
+            <p>是否放弃保存商品信息？</p>
+            <div class="i04_btn_box">
+                <span class="i04_btn not" ng-click="cancel()">取消</span>
+                <span class="i04_btn yes" ng-click="sure()">确定</span>
+            </div>
+        </div>
+    </div>
+    <!--兑换商页面-->
+    <div class="i04_edit seller_edit" id="seller_edit">
+    	<h2>修改商品兑换商</h2>
+        <div class="search_seller">
+        	<div class="i04_list seller_search_type" ng-click="showList04()">
+            	<span>{{sellerShoeType}}</span>
+            	<ul class="i04_show seller_show_type" id="seller_show_type">
+                	<li>兑换商名称</li>
+                    <li>兑换商ID</li>
+                    <li>联系方式</li>
+                    <li>兑换商地址</li>
+                </ul>
+            </div>
+            <input type="text" placeholder="输入搜索内容功能" class="i04_search_box search_box_02" ng-model="merchants_input">
+            <span class="i04_search_btn search_btn_02" ng-click="merchants_search()">查询</span>
+        </div>
+        <table class="seller_edit_table i04_smaller table-bordered table-striped table-responsive" id="seller_edit_table">
+            <thead>
+                <tr>
+                    <th>兑换商名称</th>
+                    <th>兑换商ID</th>
+                    <th>联系方式</th>
+                    <th>兑换商地址</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            	<tr ng-repeat="x in merchants.result">
+                	<td>{{x.merchant_name}}</td>
+                	<td>{{x.merchant_id}}</td>
+                	<td>{{x.phone}}</td>
+                	<td>{{x.address}}</td>
+                	<td>
+                    	<span class="i40_table_btn" ng-click="chooseMerchantName(x.merchant_name)">选择兑换商</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="i04_change_page change_page_02">
+            <div class="i04_return_btn" ng-show="merchants_pageNumber!=1" ng-click="merchants_prev()"></div>
+            <div class="i04_return_btn_no" ng-show="merchants_pageNumber==1"></div>
+            <input type="text" ng-model="merchants_pageNumber" class="page">
+            <span>
+            /<span class="page_num">{{merchants.total_page}}</span>
+            </span>
+            <div class="i04_go_btn" ng-show="merchants_pageNumber<merchants.total_page" ng-click="merchants_next()"></div>
+            <div class="i04_go_btn_no" ng-show="merchants_pageNumber==merchants.total_page"></div>
+        </div>
+        <div class="i04_btn_box">
+        	<span class="i04_btn not" ng-click="giveupMerchantName()">放弃</span>
+            <!--<span class="i04_btn yes" ng-click="saveMerchantName()">保存</span>-->
+        </div>
+        <div class="i04_remind" id="choose_MerchantName">
+            <h3>温馨提示</h3>
+            <p>是否选择该兑换商？</p>
+            <div class="i04_btn_box">
+                <span class="i04_btn not" ng-click="chooseMerchantNameNot()">取消</span>
+                <span class="i04_btn yes" ng-click="saveMerchantName()">确定</span>
+            </div>
+        </div>
+    </div>
+    <!--碎片详情-->
+    <div class="i04_edit suipian_info"  id="suipian_info" style="overflow-y:scroll">
+    	<span class="cancel" ng-click="closeSuipian()">X</span>
+    	<h2>碎片去向详情</h2>
+        <table class="suipian_info_table i04_smaller table-bordered table-striped table-responsive" id="suipian_info_table">
+        	<thead>
+            	<tr>
+                	<th>碎片号</th>
+                	<th>日常商品库剩余数量</th>
+                	<th>消耗总量</th>
+                	<th>幸运蛋消耗</th>
+                	<th>用户背包中未被消耗</th>
+                	<th>用于兑换</th>
+                	<th>被丢弃碎片</th>
+                </tr>
+            </thead>
+            <tbody>
+            	<tr ng-repeat="(key,val) in pieces">
+                	<td>{{key}}号</td>
+                    <td>{{val.left_num}}</td>
+                    <td>{{val.consume_num}}</td>
+                    <td>{{val.egg_num}}</td>
+                    <td>{{val.pack_num}}</td>
+                    <td>{{val.exchge_num}}</td>
+                    <td>{{val.drop}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

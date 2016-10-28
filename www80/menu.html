@@ -1,0 +1,154 @@
+<html>
+   <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style type="text/css">
+    @charset "UTF-8";
+    div.menu ul
+    {
+        list-style:none;
+        margin: 0px;
+        padding: 0px;
+        width: auto; 
+    }
+  
+    div.menu ul li div:hover
+    {
+        background-color: #bfcbd6;
+        color: #465c71;
+        text-decoration: none; 
+    }
+
+    div.menu ul li div:active
+    {
+
+    }
+</style>
+</head><body><div class="nav"></div>
+<div id="game" class="menu">
+    <div id="bottom_left">
+        <div id="logo">LOGO</div>
+        <ul id="bottom_left_ul">
+               <li data-type="cangku" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_shop.png" class="img1">
+                    <span>在线人数</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="rolenum"  onclick='location.href="arserver/index.html#rolenum"'><span>在线人数管理</span></li>
+                </ul>
+            </li>
+
+            <li data-type="cangku" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_shop.png" class="img1">
+                    <span>商品管理</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="exchangebus"  onclick='location.href="arserver/index.html#exchangebus"'><span>兑换商管理</span></li>
+
+                    <li data-type="exchangeshop"  onclick='location.href="arserver/index.html#exchangeshop"'><span>商品兑换</span></li>
+
+<!--                    <li data-type="exchange_item"  onclick='location.href="arserver/index.html#exchange_item"'><span>兑换实体商品</span></li>-->
+
+                    <li data-type="rcsp"><span onclick="goto_view('i041')">日常商品库</span></li>
+                    <li data-type="spml"><span onclick="goto_view('i040')">商品目录（总库）</span></li>
+                    <li data-type="xydk"><span onclick="goto_view('i042')">幸运蛋库</span></li>
+                    <li data-type="xsk"><span onclick="goto_view('i048')">新手库</span></li>
+
+<li data-type="tongji_huizong" onclick='location.href="arserver/index.html#tongji_huizong"'><span>兑换汇总</span></li>
+                </ul>
+            </li>
+            <li data-type="yingkuichi" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_statistics.png" class="img1">
+                    <span>奖池管理</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="xwc" onclick="goto_view('i120')"><span>行为池</span></li>
+                    <li data-type="yingkui_110" onclick='location.href="arserver/index.html#yingkui_110"'><span>盈亏池</span></li>
+                    <li data-type="jijin_130" onclick='location.href="arserver/index.html#jijin_130"'><span>基金池</span></li>
+                </ul>
+            </li>
+            <li data-type="toufangguanli" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_put.png" class="img1">
+                    <span>投放管理</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="sptf_jl" onclick="goto_view('i010')"><span>商品投放</span></li>
+                    <li data-type="gl_jl" onclick="goto_view('i011')"><span>管理记录</span></li>
+                    <li data-type="wptf"  onclick="goto_view('i012')"><span>5号碎片投放记录</span></li>
+                    <li data-type="qbtf_jl" onclick="goto_view('i200')"><span>钱包投放管理</span></li>
+                </ul>
+            </li>
+            <li data-type="zonghetongji" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_statistics.png" class="img1">
+                    <span>综合统计</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="role_tx" onclick="goto_view('i020')"><span>用户特性分析</span></li>
+                    <li data-type="role_xx" onclick="goto_view('i021')"><span>用户信息查询</span></li>
+                    <li data-type="role_zh" onclick="goto_view('i022')"><span>综合数据统计</span></li>
+                    <li data-type="scdjtj"  onclick="goto_view('i023')"><span>商城道具统计</span></li>
+                    <li data-type="tongji_dengji" onclick='location.href="arserver/index.html#tongji_dengji"'><span>用户等级统计</span></li>
+                    <li data-type="tongji_chongzhi" onclick='location.href="arserver/index.html#tongji_chongzhi"'><span>用户充值统计</span></li>
+                </ul>
+            </li>
+            <li data-type="huodongguanli" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_put.png" class="img1">
+                    <span>活动管理</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="hd_dxxts" onclick="goto_view('i051')"><span>短消息推送</span></li>
+                    <li data-type="hd_wztd" onclick="goto_view('i053')"><span>文章推送</span></li>
+                    <li data-type="hd_tsjl"  onclick="goto_view('i052')"><span>推送记录</span></li>
+                    <li data-type="hd_tspz"  onclick="goto_view('i055')"><span>活动推送配置</span></li>
+                </ul>
+            </li>
+            <li data-type="huodongguanli" class="bottom_left_ul_li">
+                <div>
+                    <div class="line"></div>
+                    <img src="img/icon_put.png" class="img1">
+                    <span>福利发放</span>
+                    <img src="img/arrow_left.png" class="img2">
+                </div>
+                <ul>
+                    <li data-type="hd_dxxts" onclick="goto_view('i061')"><span>发放记录</span></li>
+                    <li data-type="hd_wztd" onclick="goto_view('i060')"><span>发放管理</span></li>
+                    <li data-type="hd_wztd" onclick="goto_view('i062')"><span>活动福利发放</span></li>
+                    <li data-type="xyhdlflkz" onclick="goto_view('i070')"><span>新用户登录福利控制</span></li>
+                </ul>
+            </li>
+            
+            <li>
+                <div>
+                    <div class="line"></div>
+                </div>
+            </li>
+            </ul>
+        <div class="share_pop"></div>
+    </div>
+    <div id="gamebottom">
+        <div id="gametop">
+            <div id="top_break" onclick="localStorage.clear();location.href='index.html#/main';location.reload();">退出登录</div>
+        </div>
+        <div id="gamebottomdiv"></div>
+    </div>
+</div>
+
+<div style="clear:both;"></div>
+</body></html>

@@ -1,0 +1,62 @@
+.i022 .clear{  clear: both;  }
+.i022  p{margin: 0;padding: 0}
+.i022{  margin-left: 200px;padding: 10px 30px 10px 10px;margin-top: 64px;  }
+.i022 .title{  width: 100%;color: rgb(45,141,214);position: relative;min-width: 1200px}
+.i022 .title p{}
+.i022 .title .btn1{background-color: rgb(45,141,214);color:white;height: 25px;border:none;line-height: normal;
+    border-top-left-radius:3px;border-top-right-radius: 3px;text-align: center;width:312px;
+    margin-bottom: 20px;
+}
+
+
+.i022 .datePicker{z-index:888;width:312px;position:absolute;left:0;top:26px;border-left: 1px solid #cccccc;border-right:1px solid #cccccc;border-bottom: 1px solid #cccccc ;  border-bottom-left-radius: 5px;  border-bottom-right-radius: 5px;  background-color: white;  }
+.i022 .datePicker .date{  width: 100%;  background-color: white;  padding: 15px 0;  text-align: center;  }
+.i022 .datePicker .date button{  background-color: inherit;  border: none;  border-right: 1px solid #cccccc;  padding: 0;  font-size: 17px;  color: #444;  margin-right: 0;  width: 55px; }
+.i022 .datePicker .picker{  width: 100%;padding: 10px 0;  }
+.i022 .datePicker .picker span{  float: left;  margin:  0 10px;  padding-top: 3px;  }
+.i022 .datePicker .selectBox{  width: 110px;  height: 24px;  float: left;  border: 1px solid #cccccc;  }
+.i022 .datePicker .selectBox p{  float: left;  padding: 0;  margin: 0;  }
+.i022 .datePicker .selectBox input{  width: 90px;  border: none;  }
+.i022 .datePicker .selectBox img{  float: right;  padding-top: 3px;  }
+.i022 .datePicker .enter{  width: 100%; border-top: 1px solid #cccccc;  padding: 10px 25px;  text-align: center;  }
+.i022 .datePicker .enter button{  width: 100px;background-color: inherit;  border: none;  font-size: 17px;  }
+
+
+.i022 caption {position: absolute;  bottom: 1px;  width: auto;  left: 200px;}
+.i022 caption a{height: 35px;width: 110px; padding: 0 10px;background: url("img/download.png") no-repeat;border: none}
+.i022 caption a:hover{background: url("img/download_hover.png") no-repeat}
+.i022 #bootstrap-table {padding-bottom: 20px}
+
+
+.i022 .switch button{width: 110px;height: 30px;border:none;border-radius: 3px;background-color:rgb(48,205,104);color: white;float: left;margin-left: 20px}
+.i022 .switch button:hover{background-color:rgb(60,220,120);}
+
+.i022 .box{background-color: white;padding: 10px;border: 1px solid #CCCCCC;position: relative;min-width: 1200px}
+.i022 .row{margin: 0;position: relative;}
+.i022 .row .pull-right{display: none}
+.i022 .row table{border: 1px solid #cccccc;min-width: 3000px;background-color: white}
+.i022 .row table th{  text-align: center;  border-right: 1px solid #cccccc;  vertical-align: middle;  height: 45px; border-bottom: 1px solid #CCCCCC;width: 90px!important;}
+.i022 .row table td{;text-align: center; padding:10px 0 ;border-right: 1px solid #cccccc;vertical-align: middle;  word-wrap:break-word;  white-space:normal;width: 90px!important;}
+.i022 .row table .headerTH th{border: none}
+
+.i022 .tableFooter  {height: 45px; margin-top:10px;  padding-top: 10px;}
+.i022 .tableFooter .select1 {  width: 50px;  height: 24px;  overflow: hidden;  display:block;  }
+.i022 .tableFooter .select2{  float: left;  border: 1px solid rgb(45,141,214);border-radius: 5px ;  display: block;  height: 24px;  overflow: hidden;  width: 50px;}
+.i022 .tableFooter  select {  font-size: 14px;  position: relative;  height: 24px;  width: 50px;  color: #000;  border: none;}
+
+.i022 .tableFooter .page{  float: right;  }
+.i022 .tableFooter .page .left{  width: 30px;  height: 24px;  background-color: rgb(45,141,214);  float: left;  margin-right: 5px;  border-radius: 5px;  text-align: center;  }
+.i022 .tableFooter .page .input{  float: left;  height: 24px;  line-height: 24px;  margin-right: 5px;  }
+.i022 .tableFooter .page .input span{  font-size: 17px;  }
+.i022 .tableFooter .page input{  width: 35px;  height: 24px;  border: 1px solid #CCCCCC;  border-radius: 5px;  margin-right: 5px;  text-align: center;  }
+.i022 .tableFooter .page .right{  width: 30px;  height: 24px;  background-color: rgb(45,141,214);  float: left;  border-radius: 5px;  text-align: center;  }
+.i022 .tableFooter .page .disabled{  background-color: #CCCCCC!important;  pointer-events: none;  }
+
+.i022 .line .type{width: 100%;  border-bottom: 1px solid rgb(45,141,214);  height: 35px;margin-bottom: 10px}
+.i022 .line .type button{float: left;border-left: 1px solid #cccccc;border-top: 1px solid #cccccc; border-radius: 0;  color: rgb(45,141,214);  width: 100px;  }
+.i022 .line .type button:hover{  background-color:rgb(45,141,214);  color: white;  }
+.i022 .line .type .selectBtn{  background-color:rgb(45,141,214);  color: white;  }
+
+
+
+

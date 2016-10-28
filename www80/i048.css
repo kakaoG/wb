@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/* CSS Document */
+body{background:#F1F1F1;}
+
+/*商品库目录于编辑部分*/
+.i048 .menu_ku{ position:relative; display:block;}
+.i048 .menu_ku_edit{ position:relative; display:none;}
+
+/*商品库编辑页面title*/
+.i048 .ku_title_box{ overflow:hidden;}
+.i048 .ku_edit_title{ float:left;}
+.i048 .return_ku{ float:left; margin-top:20px; margin-left:10px; background:#3A9AD7 url(img/arrow_right.png) no-repeat center left 10px; padding-left:30px;}
+/*搜索项目*/
+
+.i048 .search,.i048 .con{ height:50px; }
+
+.i048 .type_list{ display:none;}
+
+.i048 .search_date{ cursor:text; width:130px;}
+.i048 .search_type{ margin-left:10px;}
+
+/*商品库名称更改*/
+.i048 .ku_name{ float:left; height:32px; line-height:32px; margin-right:10px;}
+.i048 .ku_name span{ float:left; color:#7E7E7E;}
+.i048 .change_ku_name{ height:32px; width:100px; line-height:32px; padding-left:10px; border-bottom:1px solid #E8E8E8; cursor:pointer;}
+
+/*商品库删除提示框*/
+.i048 .delete_ku{ display:none;}
+
+/*商品库添加内容提示框*/
+.i048 .add_ku{ display:none;}
+
+/*编辑商品库删除提示框*/
+.i048 .delete_edit_ku{ display:none;}
+
+/*编辑商品库库名已存在提示框*/
+.i048 .ku_name_exit{ display:none;}
+
+/*商圈提示窗口*/
+.i048 .circle{overflow-y:auto; width:200px; height:300px; position:fixed; top:50%; left:50%; margin-top:-150px; margin-left:-100px; z-index:1000; background:#fff; border-radius:15px; box-shadow:0 0 0 2000px rgba(0,0,0,0.5); padding:20px; color:#7D7D7D; display:none;}
+.i048 .circle li{ line-height:30px; cursor:pointer;}
+.i048 .circle li:hover{ opacity:0.8;}
+.i048 .circle span{ position:absolute; top:0; right:0; display:block; width:30px; height:30px; text-align:center; line-height:30px; cursor:pointer; }
+/*修改碎片数量*/
+.i048 .change_suipian{ display:none;}
+.i048 .suipian_box{ width:230px; height:32px; margin:0 auto; padding-bottom:5px; box-sizing:content-box;}
+.i048 .show_suipianshu{ display:none;}
+.i048 .suipianhao{ float:left;}
+.i048 .suipianhao>*,.i048 .suipianshu>*{ float:left; height:32px; line-height:32px;}
+.i048 .suipianhao .change_suipianhao{ width:40px;}
+.i048 .suipianshu{ float:right;}
+.i048 .suipianshu_text{ width:60px; padding:0 12px; border:1px solid #E8E8E8; border-radius:4px;}
+
+/*添加新碎片*/
+.i048 .add_new_suipian{ display:none;  width:900px; margin-left:-450px;}
+.i048 .add_new_suipian .search_add_suipian{ margin-top:10px; width:500px; height:50px; margin:0 auto; }
+.i048 .add_suipian_type{ border:1px solid #E8E8E8;}
+
+.i048 .show_add_suipian{ display:none;}
+
+.i048 .search_box_suipian{border:1px solid #E8E8E8; border-right:none; }
+.i048 .search_btn_suipian{border:1px solid #E8E8E8; border-left:none; }
+.i048 .change_page_suipian{ width:170px; float:none; margin:0 auto;}
+.i048 .suipian_table{ width:800px;}
+.i048 .suipian_table tbody tr td:nth-of-type(7) input{ display:inline-block; border:1px solid #E8E8E8; width:100px;}
+.i048 .suipian_table tbody tr td:nth-of-type(8) input{ margin-right:3px;}
+/*取消添加碎片*/
+.i048 .cancel_add_suipian{ display:none;}
+/*取消添加碎片*/
+.i048 .save_add_suipian{ display:none;}
+
+
+/*商品库目录表格样式*/
+.i048 .ku_table tbody tr td:nth-of-type(4){ width:335px;}
+.i048 .ku_table tr>a:nth-of-type(3){ color:#F6D4D1;}
+/*编辑商品库目录表格样式*/
+.i048 .ku_edit_table tbody tr td:nth-of-type(8){ width:150px;}
+.i048 .tab_span{display: block;width:70px;float:left;white-space:nowrap;text-align: left;padding-left: 5px;}
+.i048 .tab_em_red{color:red;}

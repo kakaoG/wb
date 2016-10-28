@@ -1,0 +1,319 @@
+<div ng-include src="'menu.html'"></div>
+<div class="i062 i04">
+    <div class="lucky_title_box" ng-show="state==1">
+
+        <div class="layer_datatime">
+            <div class="layer_datatimeVal" ng-click="iconState()">日期选择：
+                <span>全部</span>|
+                <span></span>
+                <img src="img/arrow_right.png" class="arrow_icon">
+            </div>
+            <div class="layer_datatimeVal1">
+                <div class="datatime_div1">
+                    <span ng-click="selectTimes('今日')">今日</span>|
+                    <span ng-click="selectTimes('昨日')">昨日</span>|
+                    <span ng-click="selectTimes('近7日')">近7日</span>|
+                    <span ng-click="selectTimes('近30日')">近30日</span>|
+                    <span ng-click="selectTimes('全部')">全部</span>
+                </div>
+                <div class="datatime_div2">
+                    自定<input type="text" id="start_time" class="laydate-icon">
+                    到<input type="text"  id="end_time" class="laydate-icon">
+                </div>
+                <div class="datatime_div3">
+                    <div class="datatime_div3_1" ng-click="iconState()">取消</div>
+                    <div class="datatime_div3_2" ng-click="selectQueryDate()">确定</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lucky_title_box" ng-show="state==3">
+
+        <div class="layer_datatime">
+            <div class="layer_datatimeVal" ng-click="iconState()">日期选择：
+                <span>全部</span>|
+                <span></span>
+                <img src="img/arrow_right.png" class="arrow_icon">
+            </div>
+            <div class="layer_datatimeVal1">
+                <div class="datatime_div1">
+                    <span ng-click="selectTimes('今日')">今日</span>|
+                    <span ng-click="selectTimes('昨日')">昨日</span>|
+                    <span ng-click="selectTimes('近7日')">近7日</span>|
+                    <span ng-click="selectTimes('近30日')">近30日</span>|
+                    <span ng-click="selectTimes('全部')">全部</span>
+                </div>
+                <div class="datatime_div2">
+                    自定<input type="text" id="start_time3" class="laydate-icon">
+                    到<input type="text"  id="end_time3" class="laydate-icon">
+                </div>
+                <div class="datatime_div3">
+                    <div class="datatime_div3_1" ng-click="iconState()">取消</div>
+                    <div class="datatime_div3_2" ng-click="selectQueryDate()">确定</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="i062_title" ng-show="state!=3&&state!=4" >活动福利发放</h4>
+    <h4 class="i062_title"  ng-show="state==3">永辉活动获取标记</h4>
+
+    <button class="i062_title"  ng-show="state==4">返回列表</button>
+    <img  ng-show="state==4" class="state3Img" src="img/i010_edit.png">
+
+
+    <div class="search"  ng-show="state==1">
+        <select ng-model="table1fix.key">
+            <option value="">查询类型</option>
+            <option value="goods_name">活动名称</option>
+            <option value="goods_id">管理员名称</option>
+            <option value="merchant_name">全部</option>
+        </select>
+        <input type="search" placeholder="输入内容搜索" class="i04_search_box" ng-model="table1fix.value">
+        <span class="i04_search_btn" ng-click="searchtable1()">查询</span>
+    </div>
+    <div class="search"  ng-show="state==3">
+        <select ng-model="table1fix.key">
+            <option value="">查询类型</option>
+            <option value="goods_name">活动名称</option>
+            <option value="goods_id">管理员名称</option>
+            <option value="merchant_name">全部</option>
+        </select>
+        <input type="search" placeholder="输入内容搜索" class="i04_search_box" ng-model="table1fix.value">
+        <span class="i04_search_btn" ng-click="searchtable1()">查询</span>
+    </div>
+
+    <!--表格-->
+    <table class="lucky_table table-bordered table-striped table-responsive"  ng-show="state==1">
+        <tr>
+            <th>活动名称</th>
+            <th>发放日期</th>
+            <th>结束日期</th>
+            <th>价值回收日期</th>
+            <th>操作管理员名称</th>
+            <th>发放价值（Ko币）</th>
+            <th>回收价值（Ko币）</th>
+            <th>目标发放人数</th>
+            <th>已发放人数</th>
+            <th>当前礼品内容</th>
+            <th>活动状态</th>
+            <th>操作</th>
+        </tr>
+        <tr ng-show="data.result.length==0">
+            <td colspan="12">当前无符合条件数据</td>
+        </tr>
+        <tr ng-repeat="x in data.result">
+            <td>{{x.ut*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td><span class="i40_table_btn" ng-click="showDetail(x.event)">查看</span></td>
+            <td>{{x.event_name}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>
+                <a>查看获取用户</a>
+                <a>修改当前配置</a>
+                <a>二维码</a>
+                <a>结束活动</a>
+            </td>
+        </tr>
+    </table>
+    <!--表格-->
+    <table class="lucky_table table-bordered table-striped table-responsive"  ng-show="state==3">
+        <tr>
+            <th>获取日期</th>
+            <th>用户名称</th>
+            <th>获取价值</th>
+            <th>活动价值剩余</th>
+            <th>用户账号</th>
+        </tr>
+        <tr ng-show="data.result.length==0">
+            <td colspan="5">当前无符合条件数据</td>
+        </tr>
+        <tr ng-repeat="x in data.result">
+            <td>{{x.ut*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+        </tr>
+    </table>
+    <!--页面跳转栏-->
+    <div class="con"  ng-show="state==1">
+        <div class="i04_dol">
+            <div class="i04_list dol_num" ng-click="showList()">
+                <span>{{behaviorPool.pageSizeSelect}}</span>
+                <ul class="i04_show dol_list" id="pageSizeSelect">
+                    <li ng-click="showList_child(10)">10</li>
+                    <li ng-click="showList_child(30)">30</li>
+                </ul>
+            </div>
+            <span class="tiao">条</span>
+            <div class="dol_btn" ng-click="export_xlsx()"></div>
+        </div>
+        <div class="i04_change_page">
+            <div class="i04_return_btn" ng-show="behaviorPool.pageNum!=1" ng-click="behaviorPool_prev()"></div>
+            <div class="i04_return_btn_no" ng-show="behaviorPool.pageNum==1"></div>
+            <input type="text" ng-model="behaviorPool.pageNum" class="page">
+                <span>
+                /<span class="page_num">{{data.total_page}}</span>
+                </span>
+            <div class="i04_go_btn" ng-show="behaviorPool.pageNum<data.total_page" ng-click="behaviorPool_next()"></div>
+            <div class="i04_go_btn_no" ng-show="behaviorPool.pageNum==data.total_page"></div>
+        </div>
+    </div>
+    <!--页面跳转栏-->
+    <div class="con"  ng-show="state==3">
+        <div class="i04_dol">
+            <div class="i04_list dol_num" ng-click="showList()">
+                <span>{{behaviorPool.pageSizeSelect}}</span>
+                <ul class="i04_show dol_list" id="pageSizeSelect1">
+                    <li ng-click="showList_child(10)">10</li>
+                    <li ng-click="showList_child(30)">30</li>
+                </ul>
+            </div>
+            <span class="tiao">条</span>
+            <div class="dol_btn" ng-click="export_xlsx()"></div>
+        </div>
+        <div class="i04_change_page">
+            <div class="i04_return_btn" ng-show="behaviorPool.pageNum!=1" ng-click="behaviorPool_prev()"></div>
+            <div class="i04_return_btn_no" ng-show="behaviorPool.pageNum==1"></div>
+            <input type="text" ng-model="behaviorPool.pageNum" class="page">
+                <span>
+                /<span class="page_num">{{data.total_page}}</span>
+                </span>
+            <div class="i04_go_btn" ng-show="behaviorPool.pageNum<data.total_page" ng-click="behaviorPool_next()"></div>
+            <div class="i04_go_btn_no" ng-show="behaviorPool.pageNum==data.total_page"></div>
+        </div>
+    </div>
+    <a class="addNew" ng-click="addNew()"  ng-show="state==1">添加性活动<span class="circle">+</span></a>
+
+
+    <div  ng-show="state==2">
+
+    <table class="lucky_table table-bordered table-striped table-responsive table2" >
+        <tr>
+            <td><label>活动名称:</label><input type="text"></td>
+            <td><label>活动名称:</label><input type="text" id="start_time2" class="laydate-icon">至<input type="text" id="end_time2" class="laydate-icon"></td>
+        </tr>
+        <tr>
+            <td><label>活动图片:</label><img src="img/i010_1.png"></td>
+            <td><label>活动详情:</label><textarea></textarea></td>
+        </tr>
+        <tr>
+            <td><label>发放价值:</label><input type="text"></td>
+            <td><label>发放份数:</label><input type="text"></td>
+        </tr>
+        <tr>
+            <td><label>每人领取上限:</label><input type="text"></td>
+            <td><label>价值回收日期:</label><input type="text" id="price_time" class="laydate-icon"></td>
+        </tr>
+    </table>
+        <span>物品碎片配置</span>
+        <a class="addNew" ng-click="addsui()" >点击添加物品碎片<span class="circle">+</span></a>
+
+    <table class="lucky_table table-bordered table-striped table-responsive">
+        <tr>
+            <th>商品名称</th>
+            <th>碎片号</th>
+            <th>商品ID</th>
+            <th>商品价格</th>
+            <th>商品成本价</th>
+            <th>兑换商品名称</th>
+            <th>操作</th>
+        </tr>
+        <tr ng-repeat="x in data.result">
+            <td>{{x.ut*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td><span class="i40_table_btn" ng-click="showDetail(x.event)">查看</span></td>
+            <td>{{x.event_name}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td>{{x.money_change}}</td>
+            <td><span class="circle">-</span></td>
+        </tr>
+    </table>
+    <span>道具配置</span>
+    <a class="addNew" ng-click="adddao()" >点击添加道具<span class="circle">+</span></a>
+    <table class="lucky_table table-bordered table-striped table-responsive">
+        <tr>
+             <td>
+                 <select>
+                    <option>1</option>
+                </select>
+                 <span class="X">X</span>
+                 <select>
+                     <option>2</option>
+                 </select>
+             </td>
+
+        </tr>
+        <tr>
+             <td>
+                 <button>提交</button>
+             </td>
+
+        </tr>
+    </table>
+    </div>
+    <div ng-if="suiShow" class="suiShow">
+        <div class="form">
+            <h4 class="i062_title">添加发放碎片</h4>
+            <div class="search">
+                <select ng-model="table1fix.key">
+                    <option value="">查询类型</option>
+                    <option value="goods_name">活动名称</option>
+                    <option value="goods_id">管理员名称</option>
+                    <option value="merchant_name">全部</option>
+                </select>
+                <input type="search" placeholder="输入内容搜索" class="i04_search_box" ng-model="table1fix.value">
+                <span class="i04_search_btn" ng-click="searchtable1()">查询</span>
+            </div>
+
+            <!--表格-->
+            <table class="lucky_table table-bordered table-striped table-responsive" >
+                <tr>
+                    <th>商品名称</th>
+                    <th>商品ID</th>
+                    <th>商品价格</th>
+                    <th>兑换商品名称</th>
+                    <th>兑换商品ID</th>
+                    <th>商品选择</th>
+                </tr>
+                <tr ng-show="data.result.length==0">
+                    <td colspan="6">当前无符合条件数据</td>
+                </tr>
+                <tr ng-repeat="x in data.result">
+                    <td>{{x.event_name}}</td>
+                    <td>{{x.money_change}}</td>
+                    <td>{{x.money_change}}</td>
+                    <td>{{x.money_change}}</td>
+                    <td>{{x.money_change}}</td>
+                    <td>
+                        <a>选择</a>
+                    </td>
+                </tr>
+            </table>
+            <!--页面跳转栏-->
+            <div class="con">
+                <div class="i04_change_page">
+                    <div class="i04_return_btn" ng-show="behaviorPool.pageNum!=1" ng-click="behaviorPool_prev()"></div>
+                    <div class="i04_return_btn_no" ng-show="behaviorPool.pageNum==1"></div>
+                    <input type="text" ng-model="behaviorPool.pageNum" class="page">
+                <span>
+                /<span class="page_num">{{data.total_page}}</span>
+                </span>
+                    <div class="i04_go_btn" ng-show="behaviorPool.pageNum<data.total_page" ng-click="behaviorPool_next()"></div>
+                    <div class="i04_go_btn_no" ng-show="behaviorPool.pageNum==data.total_page"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="erwei" ng-if="state=4">
+
+    </div>
+</div>

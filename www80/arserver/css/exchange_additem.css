@@ -1,0 +1,8 @@
+/*物流编号*/
+#additem_wl_index,#additem_wl_index1,#additem_wl_index2{
+    position: relative;
+    width: 150px;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+}

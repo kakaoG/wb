@@ -1,0 +1,135 @@
+<div ng-include src="'menu.html'"></div>
+
+<div class="i061">
+    <div class="title clear">
+        <button ng-click="openDatePicker()"><p style="float: left">日期选择:</p>{{selectedDate
+            }}<img src="img/down.png" style="float: right;padding-top: 3px;"></button>
+        <div class="clear"></div>
+    </div>
+    <div class="datePicker" ng-show="showDatePicker">
+        <div class="date">
+            <button ng-click="slectedDate(0)" style="border-left: 1px solid #cccccc">今天</button>
+            <button ng-click="slectedDate(1)">昨日</button>
+            <button ng-click="slectedDate(2)">近7日</button>
+            <button ng-click="slectedDate(3)">近30日</button>
+            <button ng-click="slectedDate(4)">全部</button>
+        </div>
+        <div class="picker">
+            <span>自定</span>
+            <div class="selectBox">
+                <input id="jqueryPicker" ng-model="startDate"/>
+                <img src="img/date.png">
+            </div>
+            <span>到</span>
+            <div class="selectBox">
+                <input id="jqueryPicker1" ng-model="endDate"/>
+                <img src="img/date.png">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="enter">
+            <button style="float: left;color: rgb(45,141,214)" ng-click="enter()">确定</button>
+            <div style="height: 20px;width: 1px;float: left;background-color: #cccccc;margin-left: 25px"></div>
+            <button style="float: right;color: #444" ng-click="cancel()">取消</button>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!--<div ng-show="showDatePicker" class="datePicker">-->
+        <!--<div class="date">-->
+            <!--<button ng-click="slectedDate(0)" style="border-left: 1px solid #cccccc">今天</button>-->
+            <!--<button ng-click="slectedDate(1)">昨日</button>-->
+            <!--<button ng-click="slectedDate(2)">近7日</button>-->
+            <!--<button ng-click="slectedDate(3)">近30日</button>-->
+        <!--</div>-->
+        <!--<div class="picker">-->
+            <!--<span>自定</span>-->
+            <!--<div class="selectBox" ng-click="openLeftDate()"  id="jqueryPicker">-->
+                <!--<input ng-model="newDate"/>-->
+                <!--<img src="img/date.png">-->
+            <!--</div>-->
+            <!--<span>到</span>-->
+            <!--<div class="selectBox" ng-click="openRightDate()" id="jqueryPicker1">-->
+                <!--<input ng-model="newDate"/>-->
+                <!--<img src="img/date.png">-->
+            <!--</div>-->
+            <!--<div class="clear"></div>-->
+        <!--</div>-->
+
+        <!--<div class="enter">-->
+            <!--<button style="float: left;color: rgb(45,141,214)" ng-click="enter()">确定</button>-->
+            <!--<div style="height: 20px;width: 1px;float: left;background-color: #cccccc;margin-left: 25px"></div>-->
+            <!--<button style="float: right;color: #444" ng-click="cancelAA()">取消</button>-->
+            <!--<div class="clear"></div>-->
+        <!--</div>-->
+
+    <!--</div>-->
+    <div class="box">
+        <div class="selectBox">
+            <div class="select2">
+                <div class="select1">
+                    <select ng-change="change(x)" ng-model="x">
+                        <option selected="selected">全服用户</option>
+                        <option >IOS用户</option>
+                        <option >Android用户</option>
+                        <option >个人</option>
+                    </select>
+                </div>
+            </div>
+            <input ng-show="sleectBox" type="text" ng-model="phone" placeholder="请输入用户账号">
+            <button ng-click="select()">搜索</button>
+            <div class="clear"></div>
+        </div>
+        <div class="row clear">
+            <table class="table table-hover" id="bootstrap-table">
+                <thead>
+                <tr>
+                    <th style="width: 90px!important;">发放日期</th>
+                    <th >发放人员</th>
+                    <th style="width: 90px!important;">发放目标</th>
+                    <th>发放内容</th>
+                    <th>发放因素</th>
+                    <th style="width: 150px!important;">发放账号</th>
+                </tr>
+                </thead>
+                <tbody id="tableBody">
+                <tr ng-repeat="model in items">
+                    <td>{{model.et*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+                    <td>{{model.issue_name}}</td>
+                    <td>{{model.target}}</td>
+                    <td>
+                        <span ng-repeat="c in model.content">
+                            {{c.name}}x{{c.number}},
+                        </span>
+                    </td>
+                    <td>{{model.reason}}</td>
+                    <td ng-if="model.person_phone">{{model.person_phone}}</td>
+                    <td ng-if="!model.person_phone">---</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tableFooter" ng-show="items.length > 0">
+            <div class="select2">
+                <div class="select1">
+                    <select ng-model="changea" ng-change="change1(changea)">
+                        <option selected="selected" value="10">10</option>
+                        <option value="30">30</option>
+                    </select>
+                </div>
+            </div>
+            <div class="dol_btn" ng-click="export_xlsx()"></div>
+            <div class="page">
+                <div class="left" ng-click="up()" ng-class="{disabled:(page == 1)}">
+                    <img style="height: 60%" src="img/arrow_right.png">
+                </div>
+                <div class="input">
+                    <input type="text" ng-model="page"><span>/{{allPage}}</span>
+                </div>
+                <div class="right" ng-click="next()" ng-class="{disabled:(allPage == page)}">
+                    <img style="height: 60%" src="img/arrow_right1.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

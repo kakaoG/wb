@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        body,*{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-color: #f1f1f1;
+        }
+        #kologin{
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            left:0px;
+            top:0px;
+            bottom: 0px;
+            right: 0px;
+            margin: auto;
+            
+        }
+        #kologintitle{
+            position: relative;
+            line-height: 30px;
+            font-size:20px;
+            text-align: center;
+        }
+        #accountdiv{
+            position: relative;
+            line-height: 40px;
+             margin-top:20px;
+            height: 40px;
+            font-size:20px;
+        }
+        #codediv{
+            position: relative;
+            line-height: 40px;
+            font-size:20px;
+             height: 40px;
+            margin-top:20px;
+        }
+        #accountdiv span,#codediv span{
+            font-size:14px;
+            position: absolute;
+        }
+        #accountdiv input,#codediv input{
+            font-size:14px;
+            position: absolute;
+            left:60px;
+            width: 220px;
+            height: 26px;
+            top:0px;
+            bottom: 0px;
+            margin: auto 0px;
+        }
+        #loginBtn{
+            position: relative;
+            text-align: center;
+            line-height: 30px;
+            font-size:18px;
+           
+            left: 0px;
+            right: 0px;
+            margin: 0px auto;
+            width: 100px;
+            height: 30px;
+            border-radius: 4px;
+            line-height: 30px;
+            text-align: center;
+            right: 20px;
+            cursor: pointer;
+            background-color: #e2443d;
+            color: white;
+             margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="kologin">
+       <div id="kologintitle">KO门后台管理</div>
+        <div id="accountdiv">
+            <span>账号：</span>
+            <input id="accountinput" type="text" placeholder="输入账号">
+        </div>
+        <div id="codediv">
+            <span>密码：</span>
+            <input id="codeinput" type="password" placeholder="输入密码">
+        </div>
+        <div id="loginBtn">登录</div>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script src="js/APIConnection.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/server.js"></script>
+<script>
+    var connObj={
+        init:function(startCall){
+            startApiconn();
+            apiconn.wsUri = common_wsUri;
+            var server_infoCall=function(){
+               //这是入口
+                //console.info("start!!");
+                if(startCall){
+                    startCall();
+                }
+            }
+            apiCallback["server_info"]=function(){
+                //开启引导
+                server_infoCall();
+            }
+            apiconn.connect(); 
+        }
+    }
+    var search=decodeURI(location.search);
+    var searchObj={};
+    if(search!=""){
+        search.substr(1,search.length)
+            .split("&").forEach(function(data){
+            var datas=data.split("=");
+            searchObj[datas[0]]=datas[1];
+        });
+    }
+    window.onload=function(){
+        var data=localStorage.getItem("kodata");
+        if(!data || data==""){
+            
+            
+        }else{
+            if(searchObj.url=="exchange"){
+                location.href="exchange.html";
+            }else{
+                location.href="index.html";
+            }
+            return;
+        }
+        connObj.init(function(){
+            var loginBtn=document.getElementById("loginBtn");
+            loginBtn.addEventListener("click",function(e){
+               //登录
+                var account=document.getElementById("accountinput").value; 
+                var code=document.getElementById("codeinput").value; 
+                if(account=="" || code ==""){
+                    alert("账号或者密码不能为空");
+                    return;
+                }
+                //13626045001 123456
+                server.login_in(account,code);
+            });
+            if(searchObj.url=="exchange"){
+                 server.login_in("13626045001","123456");
+            }
+        });
+        
+    }
+</script>
+</html>

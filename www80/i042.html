@@ -1,0 +1,149 @@
+<div ng-include src="'menu.html'"></div>
+<div class="i042 i04">
+
+    <div class="lucky_title_box">
+        <div class="i04_title lucky_title">幸运蛋库</div>
+        <div class="lucky_title_info">
+            <span>价值区间：{{price_range[0]}}-{{price_range[1]}}</span>｜
+            <span>单次行为价值：{{value_action}}</span>｜
+            <span>幸运蛋经验上限：{{egg_exp}}</span>
+        </div>
+    </div>
+    <!--搜索栏-->
+    <div class="search">
+        <!--商品库名称-->
+        <input type="text" id="datetimepicker_lucky" ng-focus="datetimepicker()" class="i04_list search_date" placeholder="修改日期" ng-model="table1fix.time">
+        <!--<select ng-model="table1fix.condition.day_num">-->
+            <!--<option value="">选择日期</option>-->
+            <!--<option value="0">今天</option>-->
+            <!--<option value="1">昨天</option>-->
+            <!--<option value="7">近7日</option>-->
+            <!--<option value="30">近30日</option>-->
+            <!--<option value="-1">全部</option>-->
+        <!--</select>-->
+
+        <select ng-model="table1fix.key">
+            <option value="">查询类型</option>
+            <option value="goods_name">物品名称</option>
+            <option value="goods_id">物品ID</option>
+            <option value="merchant_name">兑换商品名称</option>
+            <option value="merchant_id">兑换商ID</option>
+        </select>
+
+
+        <input type="search" placeholder="输入内容搜索" class="i04_search_box" ng-model="table1fix.value">
+        <span class="i04_search_btn" ng-click="searchtable1()">查询</span>
+        <span class="i04_search_btn search_btn_lucky" ng-click="searchquanbu1()">查询全部</span>
+        <div class="i04_big_btn" ng-click="xiugai()">
+            修改幸运蛋库
+        </div>
+    </div>
+    <!--幸运蛋表格-->
+    <table class="lucky_table table-bordered table-striped table-responsive" id="lucky_table">
+        <thead>
+        <tr>
+            <th>修改日期</th>
+            <th>商品名称</th>
+            <th>商品ID</th>
+            <th>商品价格</th>
+            <th>兑换商名称</th>
+            <th>兑换商ID</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="x in data.result">
+            <td>{{getdate(x.ut)}}</td>
+            <td>{{x.goods_name}}</td>
+            <td>{{x.goods_id}}</td>
+            <td>¥{{x.price}}</td>
+            <td>{{x.merchant_name}}</td>
+            <td>{{x.merchant_id}}</td>
+            <td>
+                <a ng-click="delete(x.goods_id)">移除商品</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!--页面跳转栏-->
+    <div class="con">
+        <div class="i04_dol">
+            <select ng-model="table1fix.page_size">
+                <option value="10" ng-select="true">10</option>
+                <option value="30">30</option>
+            </select>
+            <span class="tiao">条</span>
+            <div class="dol_btn" ng-click="export_xlsx()"></div>
+        </div>
+        <div class="i04_change_page">
+            <div class="left {{table1fix.page_num>1?'active':''}}" ng-click="left(table1fix.page_num>1)"></div>
+            <input type="text" class="page" ng-model="table1fix.page_num">
+            <span>
+            /{{data.total_page}}
+            </span>
+            <span class="right {{table1fix.page_num<data.total_page?'active':''}}" ng-click="right(table1fix.page_num<data.total_page)"></span>
+        </div>
+    </div>
+
+
+    <!--添加新碎片-->
+    <div class="i04_edit change_lucky" style="overflow-y: auto">
+        <h2>修改幸运蛋库</h2>
+        <div class="change_lucky_search">
+            <div class="qujian">
+                <span>价值区间：</span>
+                <input type="text" ng-model="price_range1[0]" ng-change="searchtable2()">-<input type="text"  ng-model="price_range1[1]" ng-change="searchtable2()">
+            </div>
+            <div class="shangxian">
+                <span>幸运蛋经验上限</span>
+                <input type="text" ng-model="egg_exp1">
+            </div>
+            <select ng-model="table2fix.key" style="width: 172px;">
+                <option value="">请选择类型</option>
+                <option value="goods_name">物品名称</option>
+                <option value="goods_id">物品ID</option>
+                <option value="merchant_name">兑换商名称</option>
+                <option value="merchant_id">兑换商ID</option>
+            </select>
+            <input type="text" placeholder="输入搜索内容功能" class="i04_search_box search_box_lucky"  ng-model="table2fix.value" >
+            <span class="i04_search_btn search_btn_lucky" ng-click="searchtable2()">查询</span>
+            <span class="i04_search_btn search_btn_lucky" ng-click="searchquanbu2()">查询全部</span>
+        </div>
+        <table class="change_lucky_table i04_smaller table-bordered" id="change_lucky_table">
+            <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>商品ID</th>
+                <th>商品价格</th>
+                <th>兑换商名称</th>
+                <th>兑换商ID</th>
+                <th>商品选择</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in data2.result" class="{{x.egg_selected=='true'?'disable':''}}">
+                <td>{{x.goods_name}}</td>
+                <td>{{x.goods_id}}</td>
+                <td>¥{{x.price}}</td>
+                <td>{{x.merchant_name}}</td>
+                <td>{{x.merchant_id}}</td>
+                <td><input type="checkbox"  ng-model="checkedArray[$index]" ng-click="changecheck($index,x.goods_id)" ng-disabled="x.egg_selected=='true'">选择</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="i04_change_page change_page_lucky">
+            <div class="left {{table2fix.page_num>1?'active':''}}" ng-click="left2(table2fix.page_num>1)"></div>
+            <input type="text" class="page" ng-model="table2fix.page_num">
+            <span>
+            /{{data2.total_page}}
+            </span>
+            <span class="right {{table2fix.page_num<data2.total_page?'active':''}}"  ng-click="right2(table2fix.page_num<data2.total_page)"></span>
+        </div>
+        <div class="i04_btn_box" style="position: relative">
+            <span class="i04_btn not" ng-click="fanqi()">放弃</span>
+            <span class="i04_btn yes" ng-click="save()">保存</span>
+        </div>
+
+    </div>
+
+</div>

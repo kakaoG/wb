@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="i054_app" ng-controller="i054_ctrl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;"/>
+    <title>iweb</title>
+    <link href="i054.css" rel="stylesheet">
+    <script src="angular.min.js"></script>
+    <script src="APIConnection.min.js"></script>
+    <script src="common.js"></script>
+    <script src="i054.js"></script>
+</head>
+<body>
+    <div class="i054">
+        <h1>{{data.title}}</h1>
+        <p class="time">{{data.time*1000 | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+        <p class="content"><span>摘要：</span>{{data.content}}</p>
+        <p id="essay" class="essay"></p>
+    </div>
+</body>
+</html>

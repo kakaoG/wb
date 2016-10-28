@@ -1,0 +1,204 @@
+@charset "UTF-8";
+/* CSS Document */
+body{background:#F1F1F1;}
+
+/*title*/
+.i055 .lucky_title_box{position:relative;}
+.i055 .lucky_title{ float:left;}
+.i055 .lucky_title_info{ float:left; margin-top:27px; margin-left:10px; color:#B3B3B3;}
+.i055 .lucky_title_info span{ margin:0 2px;}
+/*搜索项目*/
+.i055 .search,.i055 .con{ height:50px; }
+
+.i055 .type_list{ display:none;}
+
+.i055 .search_date{ cursor:text; width:130px;}
+.i055 .search_type{ margin-left:10px;float:left;}
+
+/*编辑删除提示框*/
+.i055 .delete_lucky{ display:none;}
+
+/*修改*/
+.i055 .change_lucky{ display:none;  width:900px; margin-left:-450px;}
+.i055 .change_lucky_search{ margin-top:10px; width:800px; height:50px; margin:0 auto; }
+
+/*区间详细*/
+.i055 .qujian,.i055 .shangxian{ float:left; height:32px; line-height:32px; color:#7E7E7E; margin-right:10px;}
+.i055 .qujian input,.i055 .shangxian input{ display:inline-block; width:50px; height:32px; border:1px solid #E8E8E8; border-radius:4px; padding-left:10px;}
+.i055 .change_lucky_type{ border:1px solid #E8E8E8; margin-left:20px;}
+
+.i055 .show_change_type{ display:none;}
+
+.i055 .search_box_lucky{border:1px solid #E8E8E8; border-right:none; }
+.i055 .search_btn_lucky{border:1px solid #E8E8E8; border-left:none; }
+.i055 .change_page_lucky{ width:170px; float:none; margin:0 auto;}
+.i055 .change_lucky_table{ width:800px;}
+.i055 .change_lucky_table tbody tr td:nth-of-type(6) input{ margin-right:3px;}
+/*取消添加*/
+.i055 .cancel_add_lucky{ display:none;}
+/*取消添加*/
+.i055 .save_add_lucky{ display:none;}
+
+.i055 .left{
+    float: left;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: url("img/page_return_no.png");
+}
+.i055 .left.active{
+    background: url("img/page_return.png");
+}
+.i055 .right{
+    float: left;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: url("img/page_go_no.png");
+}
+.i055 .right.active{
+    background: url("img/page_go.png");
+}
+
+.i055 select{
+    float: left;
+    width: 184px;
+    margin-left: 20px;
+    height: 32px;
+    line-height: 30px;
+    padding-left: 16px;
+    border: 1px solid #E8E8E8;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    color: #7E7E7E;
+}
+
+
+/*日期选择*/
+.i055 .layer_datatime{
+    position: absolute;
+    left: 0px;
+    width: 270px;
+    padding-left:10px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    top:10px;
+    border-radius:4px;
+    background-color: #3e97d3;
+    z-index: 3;
+}
+.i055 .layer_datatimeVal{
+    height: 30px;
+    line-height: 30px;
+    font-size:12px;
+    color:white;
+    top:0px;
+    cursor: pointer;
+}
+.i055 .arrow_icon{
+    position: absolute;
+    right: 5px;
+    top: 9px;
+    bottom: 0px;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.i055 .layer_datatimeVal1{
+    position: absolute;
+    width: 100%;
+    top:30px;
+    height: 140px;
+    background-color: white;
+    left:0px;
+    display: none;
+    box-shadow: 0px 0px 1px rgba(0,0,0,0.5);
+}
+.i055 .datatime_div1{
+    position: relative;
+    width: 80%;
+    font-size:12px;
+    line-height: 40px;
+    height: 40px;
+    left:10%;
+}
+.i055 .datatime_div1 span{
+    position: relative;
+    margin-left: 3px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+.i055 .datatime_div2{
+    position: relative;
+    width: 94%;
+    font-size:12px;
+    line-height: 40px;
+    height: 40px;
+    margin-top:0px;
+    left:3%;
+}
+.i055 .datatime_div2 input{
+    position: relative;
+    width: 82px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.i055 .datatime_div3{
+    position: absolute;
+    width: 100%;
+    font-size:12px;
+    line-height: 40px;
+    height: 40px;
+    bottom: 0px;
+    border-top:1px solid rgba(0,0,0,0.1);
+}
+.i055 .datatime_div3_1,.datatime_div3_2{
+    position: absolute;
+    width: 50%;
+    top:0px;
+    text-align: center;
+    font-size:14px;
+    cursor: pointer;
+}
+.i055 .datatime_div3_1{
+    left:0px;
+    border-right:1px solid rgba(0,0,0,0.1);
+}
+.i055 .datatime_div3_2{
+    right: 0px;
+    color:#3e97d3;
+}
+
+/*表格*/
+.i055 .tr1{
+    height:40px;
+}
+.i055 .tr2{
+    height:50px;
+    font-size:14px;
+}
+.i055 .tr1 td,.i055 .tr2 td{
+    text-align: left;
+    padding-left:10px;
+}
+.i055 .tr1 td span,.i055 .tr2 td span{
+    color:red;
+}
+.i055 .lucky_table{margin-top:50px;}
+
+
+.i055 .head{
+    color: #3598DB;
+}
+
+.i055 .diqubox{
+    display: inline-block;
+    width: 150px;
+    margin-left: 30px;
+}
+.i055 .sptf_item{
+    height: 30px;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+}

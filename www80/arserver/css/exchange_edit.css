@@ -1,0 +1,23 @@
+.exchangeedit{
+    position: relative;
+    width: 100%;
+    line-height: 40px;
+    margin-top: 20px;
+    height: 40px;
+}
+
+.exchangeedit_input{
+    position: relative;
+    width: 150px;
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#start_time_edit{
+   width: 100px;
+    margin-right: 10px;
+}
+#end_time_edit{
+   width: 100px;
+    margin-left: 10px;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于arserver帮助说明</title>
+    <style>
+        body{
+            line-height: 20px;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+     <pre>
+         1.在目前后台管理项目里面，一部分是angular来做的，一部分是用原生js来实现的。
+         用原生js来实现的部分，都在文件夹arserver里面来完成，网页上表现就是页面跳转了，
+         从www80目录的index.html 跳转到了 www80目录下面的arserver/index.html
+         
+         以下说明内容都是在arserver目录下面。
+         
+         2.arserver里面js实现的功能页面目录
+            比如：arserver/index.html#rolenum  跳转 在线人数管理
+           
+            在线人数
+            "rolenum" //在线人数管理
+            
+            商品管理
+            "exchangebus" //兑换商管理
+            "exchangeshop" //商品兑换
+                "exchange_item" //兑换实体商品
+                "exchange_edit" //编辑券兑换信息
+            "tongji_huizong" //兑换汇总
+                "tongji_huizong_num" //每日兑换汇总统计详情
+           
+            奖池管理 
+            "yingkui_110" //盈亏池
+                各种行为事件类型
+                "yingkui_111" //兑换成本差价 
+                "yingkui_112" //广告收人    
+                "yingkui_113" //用户消费价值 
+                "yingkui_114" //注入行为池 
+                "yingkui_115" //专款拨入 
+                "yingkui_116" //注入基金池
+                "yingkui_117" //自定义行为事件
+            "jijin_130" //基金池
+                各种行为事件类型
+                "jijin_131" //碎片投放
+                "jijin_132" //用户消费价值
+                "jijin_133" //盈亏池注入
+                
+            综合统计
+            "tongji_dengji" //用户等级统计
+            "tongji_chongzhi" //用户充值统计
+            
+            
+            exchange.html 是一个独立的页面是 兑换实物商品 页面
+            login.html 是一个为 exchange.html页面登录用的，
+            
+         3.如何添加一个新的页面，比如叫做 test1 ，这个 测试页面 放到 列表 在线人数 -> 在线人数管理后面 
+         
+             1.在index.html里面
+                 找到 在线人数管理 所在的li，然后复制一份 li
+                 data-type 表示 所对应的页面名字 
+                 onclick1的意思其实在arserver里面没啥用，目的是需要复制到www80的menu.html里面用，后面提到
+                 修改 
+                     data-type="test1"
+                     onclick1='location.href="arserver/index.html#test1"' 
+                 修改后长这样
+                 &lt;li data-type="test1"  onclick1='location.href="arserver/index.html#test1"'&gt;
+                    &lt;span&gt;测试页面&lt;/span&gt;
+                 &lt;/li&gt;
+                 
+              2.在index.js里面，大概21行 找到 对象 var pageCfg={}，内容里面再增加一项
+                 "test1":["test1",[1,2]],//测试页面   
+                 意思表示页面 data-type 为 test1 ,对应的页面test1 然后在列表中表现在 第1项中的第2个li列表，用
+                 来显示选中列表样式用的。
+                 
+              3. 在arserver/html 里面新建test1.html
+                    里面内容可以自己实现，当然如果test1里面的布局和以上某某页面差不多，你可以复制粘贴一份html代码自
+                    己改改
+                  在arserver/js   里面新建test1.js
+                    引入js 需要 定义方法 test1_ 
+                    例如:
+                    function test1_(prop){
+                        //prop是页面跳转过来时的传递的参数
+                        //通过 window.runListMove("key",{a:2,b:[1,2]}) 方法来跳转当前页面的二级页面
+                        //比如从 商品兑换 的 邮寄兑换 里面点击 编辑兑奖信息，就跳转到了二级页面  exchange_additem
+                        //这时候的 prop就是 {a:2,b:[1,2]}
+
+                        //这里是各种方法自己可以定义
+
+                        function start(){
+                            //这是开始方法   
+                        }
+                        ajax("html/test1.html",function(text){
+                            $("#gamebottomdiv").innerHTML=text;
+                            start();
+                        });
+                    }
+                  
+                  在arserver/css  里面新建test1.css
+                    css很随意的写了
+                
+              4.在index.html 里面  引入test1.css  test1.js 
+                  &lt;link href="css/test1.css" rel="stylesheet"/&gt;
+                  &lt;script src="js/test1.js"&gt;&lt;/script&gt; 
+                  
+              5.到这里其实在arserver里面已经可以了，不过就如1里面提到的，需要复制
+                 &lt;li data-type="test1"  onclick1='location.href="arserver/index.html#test1"'&gt;
+                    &lt;span&gt;测试页面&lt;/span&gt;
+                 &lt;/li&gt;
+                 复制到www80里面的menu.html，找到 里面的 在线人数管理 ，复制到下面
+                 然后修改onclick1 为onclick
+                 &lt;li data-type="test1"  onclick='location.href="arserver/index.html#test1"'&gt;
+                    &lt;span&gt;测试页面&lt;/span&gt;
+                 &lt;/li&gt;
+                 这样在www80里面的列表点击就会跳转到arserver里面了，刷新页面就可以运行了
+                                              
+          4.我写了一个test1.css 和 test1.html 和 test1.css 放到了arserver项目css html js里面，可以参考
+            里面的内容和方法。
+                                              
+          5.其他
+                入口就是index.js里面的 window.onload 方法 
+                
+                当前后台有2个数据被缓存了 1.kodata 2.server_info 
+                    kodata里面存的是  登录成功给的的 _id 和 sess 数据
+                    server_info 里面存的是  obj": "server","act": "info" 这个接口里面的信息
+                var kodata=localStorage.getItem("kodata");
+                var server_info=localStorage.getItem("server_info");
+                项目里面index.js 的window.onload方法里面已经解析了，可以自行查看（如果需要特殊使用）
+               
+                这里面并没有引入jquery，自己封装了一个$ ，仅仅就是
+                var $=function(id,isTag){
+                    var dom= isTag ? document.querySelectorAll(id) : document.querySelector(id);
+                    if(!dom){
+                        console.info(id,"不存在");
+                    }
+                    return dom;
+                }
+                如果不了解HTML5里面的 document.querySelectorAll(id) 和 document.querySelector ，百度
+                $("#game .aa") 表示第一个.aa
+                $("#game .aa",true) 表示.aa数组
+                
+                使用的时候 比如设置样式
+                $("#game").style["min-width"]="2600px";
+                比如绑定事件，addEventListener 原生js方法，自行百度
+                
+                $("#hehe").addEventListener("click",function(){
+                    console.log("点我干啥");
+                },false);
+                
+                var listedit_2=$("#exchange_div3 ul .listedit",true);
+                for(var i=0;i&lt;listedit_2.length;i++){
+                    listedit_2[i].addEventListener("click",function(){
+                        var key=this.getAttribute("data-key");
+                        //跳转到子页面 key
+                        window.runListMove(key,{
+
+                        });
+                    },false);
+                }
+                                              
+                然后说一下里面的js 比如 server.js ，这里面是进行调用接口的各种方法，里面方法名字复制搜索一下
+                就知道怎么用了，因为是自定义的方法，所以可以自己写。
+                别的基本上就没了，因为这里没有用框架，方法都可以自己实现，很自由。
+                                
+     </pre>
+</body>
+</html>

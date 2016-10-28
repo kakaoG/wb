@@ -1,0 +1,159 @@
+<div ng-include src="'menu.html'"></div>
+<div class="i200 i04">
+    <div class="lucky_title_box">
+
+        <div class="layer_datatime">
+            <div class="layer_datatimeVal" ng-click="iconState()">日期选择：
+                <span>全部</span>|
+                <span></span>
+                <img src="img/arrow_right.png" class="arrow_icon">
+            </div>
+            <div class="layer_datatimeVal1">
+                <div class="datatime_div1">
+                    <span ng-click="selectTimes('今日')">今日</span>|
+                    <span ng-click="selectTimes('昨日')">昨日</span>|
+                    <span ng-click="selectTimes('近7日')">近7日</span>|
+                    <span ng-click="selectTimes('近30日')">近30日</span>|
+                    <span ng-click="selectTimes('全部')">全部</span>
+                </div>
+                <div class="datatime_div2">
+                    自定<input type="text" id="start_time" class="laydate-icon">
+                    到<input type="text"  id="end_time" class="laydate-icon">
+                </div>
+                <div class="datatime_div3">
+                    <div class="datatime_div3_1" ng-click="iconState()">取消</div>
+                    <div class="datatime_div3_2" ng-click="selectQueryDate()">确定</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="i200_title">钱包投放管理</h4>
+    <div class="search">
+        <select ng-model="selVal" ng-change="getSel(selVal)">
+            <option value="">查询类型</option>
+            <option value="truck_name">商品名称</option>
+            <option value="truck_id">商品ID</option>
+            <option value="merchant_name">兑换商名称</option>
+            <option value="merchant_id">兑换商ID</option>
+            <option value="price_range">商品价格区间</option>
+        </select>
+        <input type="search" ng-hide="rangeFlag" placeholder="输入内容搜索" class="i04_search_box" ng-model="inpVal" ng-change="getInp(inpVal)">
+        <div ng-show="rangeFlag" style="float:left; margin-right: 20px;">
+            <input type="search" class="i04_search_box1" ng-model="goods_price1">
+            <span>-</span>
+            <input type="search" class="i04_search_box2" ng-model="goods_price2">
+        </div>
+        <span class="i04_search_btn" ng-click="searchtable1()">查询</span>
+    </div>
+
+    <!--表格-->
+    <table id="table1" class="lucky_table table-bordered table-striped table-responsive">
+        <tr>
+            <th>最新投放时间</th>
+            <th>商品名称</th>
+            <th>商品ID</th>
+            <th>商品价格</th>
+            <th>商品成本价</th>
+            <th>兑换商名称</th>
+            <th>商品简介</th>
+            <th>兑换方式</th>
+            <th>钱包已投放数量</th>
+            <th>当前钱包价值（KO币）</th>
+        </tr>
+        <tr ng-show="data.result.length==0">
+            <td colspan="10">当前无符合条件数据</td>
+        </tr>
+        <tr ng-repeat="x in data.result">
+            <td>{{x.date*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td>{{x.truck_name}}</td>
+            <td>{{x.truck_id}}</td>
+            <td>{{x.price}}</td>
+            <td>{{x.init_price}}</td>
+            <td>{{x.merchant_name}}</td>
+            <td>{{x.introduce}}</td>
+            <td>{{x.exchge_way}}</td>
+            <td>{{x.num}}</td>
+            <td>{{x.purse_value}}<br/><span class="i40_table_btn" ng-click="showDetail(x.truck_id)">查看钱包获取记录</span></td>
+        </tr>
+    </table>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" aria-hidden="true" style="background: rgba(0,0,0,.5)">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="closeDialog()" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">钱包投放记录</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="search">
+                        <select ng-model="selVal2" ng-change="getSel2(selVal2)">
+                            <option value="" ng-selected="selFlag">查询类型</option>
+                            <option value="">全部</option>
+                            <option value="display_name">用户昵称</option>
+                            <option value="person_account">用户账号</option>
+                        </select>
+                        <input type="search" placeholder="输入内容搜索" class="i04_search_box" ng-model="inpVal2" ng-change="getInp2(inpVal2)">
+                        <span class="i04_search_btn" ng-click="searchtable2()">查询</span>
+                    </div>
+
+                    <!--表格-->
+                    <table id="table2" class="lucky_table table-bordered table-striped table-responsive">
+                        <tr>
+                            <th>获取时间</th>
+                            <th>获取用户昵称</th>
+                            <th>用户账号</th>
+                            <th>用户ID</th>
+                            <th>状态</th>
+                        </tr>
+                        <tr ng-show="data.result.length==0">
+                            <td colspan="4">当前无符合条件数据</td>
+                        </tr>
+                        <tr ng-repeat="x in dataDetail.result">
+                            <td>{{x.date*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+                            <td>{{x.display_name}}</td>
+                            <td>{{x.person_account}}</td>
+                            <td>{{x.person_id}}</td>
+                            <td>{{x.status}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer i04_dol">
+                    <div class="dol_btn" ng-click="export_xlsx2()"></div>
+                    <div class="i04_change_page">
+                        <div class="i04_return_btn" ng-show="behaviorPool2.pageNum!=1" ng-click="behaviorPool_prev2()"></div>
+                        <div class="i04_return_btn_no" ng-show="behaviorPool2.pageNum==1"></div>
+                        <input type="text" ng-model="behaviorPool2.pageNum" class="page">
+                        <span>/<span class="page_num">{{dataDetail.total_page}}</span></span>
+                        <div class="i04_go_btn" ng-show="behaviorPool2.pageNum<dataDetail.total_page" ng-click="behaviorPool_next2()"></div>
+                        <div class="i04_go_btn_no" ng-show="behaviorPool2.pageNum==dataDetail.total_page"></div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!--页面跳转栏-->
+    <div class="con">
+        <div class="i04_dol">
+            <div class="i04_list dol_num" ng-click="showList()">
+                <span>{{behaviorPool.pageSizeSelect}}</span>
+                <ul class="i04_show dol_list" id="pageSizeSelect">
+                    <li ng-click="showList_child(10)">10</li>
+                    <li ng-click="showList_child(30)">30</li>
+                </ul>
+            </div>
+            <span class="tiao">条</span>
+            <div class="dol_btn" ng-click="export_xlsx()"></div>
+        </div>
+        <div class="i04_change_page">
+            <div class="i04_return_btn" ng-show="behaviorPool.pageNum!=1" ng-click="behaviorPool_prev()"></div>
+            <div class="i04_return_btn_no" ng-show="behaviorPool.pageNum==1"></div>
+            <input type="text" ng-model="behaviorPool.pageNum" class="page">
+                <span>
+                /<span class="page_num">{{data.total_page}}</span>
+                </span>
+            <div class="i04_go_btn" ng-show="behaviorPool.pageNum<data.total_page" ng-click="behaviorPool_next()"></div>
+            <div class="i04_go_btn_no" ng-show="behaviorPool.pageNum==data.total_page"></div>
+        </div>
+    </div>
+</div>

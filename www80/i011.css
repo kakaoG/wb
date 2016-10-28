@@ -1,0 +1,141 @@
+/**/
+
+.i011 {
+	position: absolute;
+	top: 71px;
+	width: 100%;
+	padding-left: 188px;
+	padding-right: 12px;
+}
+.i011 .head{
+	color: #3598DB;
+}
+.i011 .head1{
+	color: #3598DB;
+	padding: 10px 0;
+}
+
+
+.i011 .nav1{
+	border-bottom: 1px solid #3598DB;
+	margin-top: 20px;
+}
+.i011 .nav1>span{
+	padding: 10px;
+	display: inline-block;
+	color: #3598DB;
+	cursor: pointer;
+	border: 1px solid #E8E8E8;
+	border-bottom: none;
+	float: left;
+}
+.i011 .nav1 .active{
+	background: #3598DB;
+	color: #fff;
+}
+.i011 .content1{
+	padding: 20px 0;
+}
+.i011 .search>*{
+  float: left;
+}
+.i011 .search input{
+	float: left;
+	border: 1px solid #E8E8E8;
+	height: 30px;
+	width: 150px;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+.i011 .content1 img{
+	height: 32px;
+	margin-left: 40px;
+	cursor: pointer;
+}
+.i011 .content1 .text{
+	color: #3598DB;
+}
+.i011 .search button{
+	border: 0;
+	float: left;
+	width: 60px;
+	height: 30px;
+	line-height: 30px;
+	background: #3598DB;
+	color: #fff;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+
+}
+.i011 .content2{
+	width: 100%;
+	height: 400px;
+}
+.i011 table{
+	margin: 20px 0;
+}
+.i011 .content4>span{
+	line-height: 30px;
+}
+.i011 .content4 .text1{
+	margin-right: 10px;
+}
+
+.i011 .content4 input{
+	border: 1px solid #E8E8E8;
+	height: 30px;
+	width: 80px;
+	border-radius: 4px;
+	position: relative;
+	top:-10px;
+	text-align: center;
+}
+.i011 .content4 .text{
+	position: relative;
+	top:-10px;
+}
+.i011 select{
+	 height: 30px;
+	background: #fff;
+	border: 1px solid #E8E8E8;
+	border-radius: 4px;
+	float: left;
+	margin-right: 10px;
+}
+.i011 .down{
+	display: inline-block;
+	width: 110px;
+	height: 32px;
+	background:url("img/download.png");
+}
+.i011 .down:hover{
+	background:url("img/download_hover.png");
+}
+.i011 .content3{
+margin-top: 30px;
+}
+.i011 .ff{
+	float: left;
+}
+.i011 .fr{
+	float: right;
+	 }
+.i011 .left{
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background:url("img/page_return_no.png");
+}
+.i011 .left.active{
+	background:url("img/page_return.png");
+}
+
+.i011 .right{
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background:url("img/page_go_no.png");
+}
+.i011 .right.active{
+	background:url("img/page_go.png");
+}

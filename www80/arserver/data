@@ -1,0 +1,87 @@
+$p_manage_purseRecord_list_get=<<EOF;
+投放管理模块：钱包投放管理列表获取
+输入：
+{
+	"obj":"manage",
+	"act":"purseRecord_list_get"
+	"admin_id":后台管理者id,//即登录接口的返回值user_info中_id
+	////////检索附加（组合）条件，如果为空{}或者字段没有则表示搜索全部
+	"condition":{
+		"day_num":要查看的最近的天数(0:今天|1:昨天|7:近7日|30:近30日|-1:全部),字段没有则表示没有该检索条件
+		"start_end":[
+			 1466493894, //开始（unix）时间戳
+			 1466793894 //结束（unix）时间戳
+		], 为[]或者字段没有则表示没有该检索条件，否则以start_end为准忽略day_num条件
+		"merchant_id":兑换商id
+		"merchant_name":兑换商名称
+		"truck_id":商品id
+		"truck_name":商品名称
+		"start_price":价格区间，开始价格,int
+		"end_price":价格区间，结束价格,int
+	},
+	"page_num":0,               //页码 0、1、2、3....
+	"page_size":10,          	//每页大小，没有则默认10
+}
+输出：
+{
+	"obj":"manage",
+	"act":"purseRecord_list_get",
+	"status":"success"
+	"result":[//搜索结果
+		{
+		 "date":最新投放时间戳
+		 "truck_id":商品id
+		 "truck_name":商品名称
+		 "price":商品价格
+		 "init_price":商品成本价
+		 "merchant_name":兑换商名称
+		 "introduce":商品简介
+		 "exchge_way":兑换方式
+		 "num":钱包已投放数量
+		 "purse_value":当前物品的钱包价值
+		},
+	],
+	"total_page":10,总共多少页
+}
+
+EOF
+
+$p_manage_purseRecord_oneGoods_list_get=<<EOF;
+投放管理模块：钱包投放记录列表获取（某物品投放记录）
+输入：
+{
+	"obj":"manage",
+	"act":"purseRecord_oneGoods_list_get"
+	"admin_id":后台管理者id,//即登录接口的返回值user_info中_id
+	"goods_id":要查询投放记录的物品id
+	////////检索附加（组合）条件，如果为空{}或者字段没有则表示搜索全部
+	"condition":{
+		"day_num":要查看的最近的天数(0:今天|1:昨天|7:近7日|30:近30日|-1:全部),字段没有则表示没有该检索条件
+		"start_end":[
+			 1466493894, //开始（unix）时间戳
+			 1466793894 //结束（unix）时间戳
+		], 为[]或者字段没有则表示没有该检索条件，否则以start_end为准忽略day_num条件
+		"display_name":用户昵称
+		"person_account":用户账号
+	},
+	"page_num":0,               //页码 0、1、2、3....
+	"page_size":10,          	//每页大小，没有则默认10
+}
+输出：
+{
+	"obj":"manage",
+	"act":"purseRecord_oneGoods_list_get",
+	"status":"success"
+	"result":[//搜索结果
+		{
+		 "date":获取时间戳
+		 "display_name":用户昵称
+		 "person_account":用户账号
+		 "person_id":用户id
+		 "status":状态,
+		},
+	],
+	"total_page":10,总共多少页
+}
+
+EOF

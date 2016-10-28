@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实物兑换</title>
+    <style>
+        body,*{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            
+        }
+        #kologin{
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            left:0px;
+            top:0px;
+            bottom: 0px;
+            right: 0px;
+            margin: auto;
+            
+        }
+        #kologintitle{
+            position: relative;
+            line-height: 30px;
+            font-size:20px;
+            text-align: center;
+        }
+        #accountdiv{
+            position: relative;
+            line-height: 40px;
+             margin-top:20px;
+            height: 40px;
+            font-size:20px;
+            width: 500px;
+        }
+        #codediv{
+            position: relative;
+            line-height: 40px;
+            font-size:20px;
+             height: 40px;
+            margin-top:20px;
+        }
+        #accountdiv span,#codediv span{
+            font-size:14px;
+            position: absolute;
+        }
+        #accountdiv input,#codediv input{
+            font-size:14px;
+            position: absolute;
+            left:60px;
+            width: 320px;
+            height: 26px;
+            top:0px;
+            bottom: 0px;
+            margin: auto 0px;
+        }
+        #loginBtn{
+            position: relative;
+            text-align: center;
+            line-height: 30px;
+            font-size:18px;
+           
+            left: 0px;
+            right: 0px;
+            margin: 0px auto;
+            width: 100px;
+            height: 30px;
+            border-radius: 4px;
+            line-height: 30px;
+            text-align: center;
+            right: 20px;
+            cursor: pointer;
+            background-color: #e2443d;
+            color: white;
+             margin-top:50px;
+        }
+        #hedui{
+            position: absolute;
+            text-align: center;
+            line-height: 30px;
+            font-size:18px;
+           
+            left: 410px;
+            
+            width: 80px;
+            height: 30px;
+            border-radius: 4px;
+            line-height: 30px;
+            text-align: center;
+            
+            cursor: pointer;
+            background-color: #e2443d;
+            color: white;
+             top:5px;
+        }
+        #listtab{
+            position: relative;
+            width: 500px;
+            
+            left:0px;
+            right: 0px;
+            margin: 0px auto;
+            margin-top:40px;
+            
+        }
+        #listtab tr{
+            height: 40px;
+            font-size:14px;
+        }
+        td{
+            box-shadow: 0px 0px 1px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        #listtab tr td:nth-child(1){
+            width: 150px;
+        }
+        #listtab tr td:nth-child(3){
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div id="kologin">
+       <div id="kologintitle">兑换实物商品</div>
+        <div id="accountdiv">
+            <span>兑换码：</span>
+            <input id="accountinput" type="text" placeholder="输入兑换码">
+            <div id="hedui">核对</div>
+        </div>
+        <table id="listtab" border=0 cellspacing="0">
+            <tr>
+                <td>持有玩家昵称</td>
+                <td>物品名称</td>
+                <td>物品状态</td>
+            </tr>
+            <tr id="infos">
+                <td id="infos_1"></td>
+                <td id="infos_2"></td>
+                <td id="infos_3"></td>
+            </tr>
+        </table>
+        <div id="loginBtn">提交</div>
+    </div>
+</body>
+<script src="../common.js"></script>
+<script src="js/APIConnection.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/server.js"></script>
+<script>
+    var connObj={
+        init:function(startCall){
+            startApiconn();
+            apiconn.wsUri = common_wsUri;
+            var server_infoCall=function(){
+               //这是入口
+                //console.info("start!!");
+                if(startCall){
+                    startCall();
+                }
+            }
+            apiCallback["server_info"]=function(){
+                //开启引导
+                server_infoCall();
+            }
+            apiconn.connect(); 
+        }
+    }
+    
+    window.onload=function(){
+        var data=localStorage.getItem("kodata");
+        if(!data || data==""){
+            location.href="login.html?url=exchange";
+            return;
+        }
+        data=JSON.parse(data);
+        person_id=data._id;
+        var exchge_id="";
+
+        connObj.init(function(){
+            
+            function checksFun(){
+                var account=document.getElementById("accountinput").value; 
+                server.store_goods_exchge(account,function(data){
+                    if(data.status=="success"){
+                        document.querySelector("#infos_1").innerHTML=data.person_name;
+                        document.querySelector("#infos_2").innerHTML=data.goods_name;
+                        document.querySelector("#infos_3").innerHTML=(data.exchge_status=="finish")?"已兑换":"未兑换";
+                        exchge_id=data.exchge_id;
+                    }
+                });
+            }
+            
+            var loginBtn=document.getElementById("loginBtn");
+            loginBtn.addEventListener("click",function(e){
+               //登录
+                if(exchge_id==""){
+                    alert("需要先核对兑换码");
+                }else{
+                var account=document.getElementById("accountinput").value; 
+                    server.store_goods_finish(exchge_id,account,function(data){
+                        if(data.status=="success"){
+                            document.querySelector("#infos_3").innerHTML="已兑换";
+                            alert("兑换成功");
+                        }
+                    });
+                }
+            });
+            
+
+            //核对
+            var hedui=document.getElementById("hedui");
+            hedui.addEventListener("click",function(e){
+                checksFun();
+            });
+            
+            
+        });
+    }
+</script>
+</html>

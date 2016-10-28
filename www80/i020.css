@@ -1,0 +1,87 @@
+
+
+.i020 .clear{  clear: both;  }
+
+
+.i020{  margin-left: 200px;margin-top: 64px;  width: 960px;  min-width: 960px;  padding: 10px 30px 10px 10px;  position: relative;  }
+
+
+.i020 .userInfo{background-color: white;}
+
+.i020 .box{  width: 450px;  height: 340px; border: 1px solid #CCCCCC ;float: left;margin-bottom: 30px; background-color: #fff }
+
+.i020 .type_title{  padding-left: 15px;  border-left: 2px solid rgb(45,141,214);  overflow: hidden;  height: 14px;  line-height: 14px;  }
+.i020 .type_title p{  padding: 0px;  margin: 0px;  }
+
+.i020 #canvas1{  width: 100%;  }
+.i020 .shuoming{  margin: 10px auto;  width: 100%;  padding: 0 0 0 15px;  height: 130px;  }
+.i020 .shuoming .regBox{  width: 60px;  height: 60px;  margin-right: 5px;  float: left;  text-align: center;  margin-bottom: 5px;  }
+.i020 .shuoming .regBox .cercle p{  width: 40px;  height: 40px;  background-color: white;  border-radius: 20px;  margin-left: 10px;  padding-top: 10px;  font-size: 14px;  color: white;  }
+.i020 .shuoming p{  font-size: 12px;  color: #888;  margin: 0;
+}
+.i020 .star{  margin: 10px auto;  width: 100%;  padding: 0 0 0 20px;  height: 130px;  }
+.i020 .star .regBox{  width: 50px;  height: 50px;  margin-right: 5px;  float: left;  text-align: center;  margin-bottom: 10px;  }
+.i020 .star .regBox .cercle p{  width: 40px;  height: 40px;  background-color: white;  border-radius: 20px;  padding-top: 10px;  font-size: 14px;  color: white;  }
+.i020 .star p{  font-size: 12px;  color: #888;  width: 40px;  margin: 0px;  }
+.i020 .s{padding: 0 0 0 40px}
+.i020 .s .regBox{width: 60px}
+.i020 .tableBox{  width: 350px;  padding-top: 10px;  margin-bottom: 30px;  float: left;  }
+.i020 .tableBox table{  margin-top: 10px;  }
+.i020 .tableBox table tr th{  text-align: center;  color: #666;  border:solid #cccccc; border-width:0px 0px 1px 0px;  }
+
+.i020 .tableBox table tr td{  text-align: center;  height: 40px;  color: #888;  border:solid #cccccc; border-width:0px 1px 1px 0px;  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

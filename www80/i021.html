@@ -1,0 +1,275 @@
+<div ng-include src="'menu.html'"></div>
+<style>
+    body{background-color: #eeeeee}
+</style>
+<div class="i021">
+    <div>
+        <!-- 抬头-->
+        <div class="title021">
+            <p>用户信息查询</p>
+        </div>
+        <div class="title">
+            <div class="select2">
+                <div class="select1">
+                    <select ng-change="change(type)" ng-model="type" id="select">
+                        <option selected="selected">用户账号</option>
+                        <option >ID</option>
+                        <option >昵称</option>
+                    </select>
+                </div>
+            </div>
+            <div class="select">
+                <input type="text" placeholder="请输入账号/ID/昵称" ng-model="content">
+                <button ng-click="selectIdBtn()">搜索</button>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="tableBox">
+            <!--用户基本信息-->
+            <div class="info">
+                <div class="type_title"><p>用户基本信息</p></div>
+                <table>
+                    <tr class="infoTr">
+                        <th>账号</th>
+                        <th>ID</th>
+                        <th>昵称</th>
+                        <th>年龄</th>
+                        <th>星座</th>
+                        <th>生日</th>
+                        <th>人物等级</th>
+                        <th>背包价值</th>
+                        <th>行为价值</th>
+                        <th>是否拥有幸运蛋</th>
+                        <th>使用时长(日)</th>
+                        <th>使用时长(周)</th>
+                        <th>使用时长(月)</th>
+                        <th>地区</th>
+                        <th>账户余额</th>
+                        <th>累计消费</th>
+                        <th>累计充值</th>
+                    </tr>
+                    <tr style="background-color: #f1f1f1">
+                        <td>{{base_info.login_name}}</td>
+                        <td>{{base_info.person_id}}</td>
+                        <td>{{base_info.person_name}}</td>
+                        <td>{{base_info.age}}</td>
+                        <td>{{base_info.star}}</td>
+                        <td>{{base_info.birthday}}</td>
+                        <td>{{base_info.person_level}}</td>
+                        <td>{{base_info.value_backpacks}}</td>
+                        <td>{{base_info.value_action}}</td>
+                        <td>{{base_info.own_egg}}</td>
+                        <td>{{base_info.app_time_day}}</td>
+                        <td>{{base_info.app_time_month}}</td>
+                        <td>{{base_info.app_time_week}}</td>
+                        <td>{{base_info.provinceCity}}</td>
+                        <td>{{base_info.gold}}</td>
+                        <td>{{base_info.pay_num}}</td>
+                        <td>{{base_info.charge_num}}</td>
+                    </tr>
+                </table>
+                <!--用户七日登入信息-->
+                <div class="type_title"><p>用户近七日登入信息记录</p></div>
+                <table class="location">
+                    <tr class="infoTr">
+                        <th>时间</th>
+                        <th ng-repeat="m in login_info">
+                            <p>{{m.time}}</p>
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <td>地点</td>
+                        <td ng-repeat="m in login_info">
+                            {{m.city}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="margin-bottom: 20px;max-width: 1200px">
+                <div class="type_title"><p>用户拥有碎片信息</p></div>
+                <div class="row clear">
+                    <table class="table table-hover" id="bootstrap-table">
+                        <thead>
+                        <tr>
+                            <th>物品名称</th>
+                            <th>1号碎片</th>
+                            <th>2号碎片</th>
+                            <th>3号碎片</th>
+                            <th>4号碎片</th>
+                            <th>5号碎片</th>
+                            <th>6号碎片</th>
+                            <th>7号碎片</th>
+                            <th>8号碎片</th>
+                            <th>9号碎片</th>
+                            <th>物品ID</th>
+                            <th>物品战斗价值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="m in piece_info"
+                            ng-show="pageList*(page-1) <= $index && $index < pageList*page">
+                            <td style="width: 200px">{{m.name}}</td>
+                            <td>{{m.piece_info[0]}}</td>
+                            <td>{{m.piece_info[1]}}</td>
+                            <td>{{m.piece_info[2]}}</td>
+                            <td>{{m.piece_info[3]}}</td>
+                            <td>{{m.piece_info[4]}}</td>
+                            <td>{{m.piece_info[5]}}</td>
+                            <td>{{m.piece_info[6]}}</td>
+                            <td>{{m.piece_info[7]}}</td>
+                            <td>{{m.piece_info[8]}}</td>
+                            <td>{{m.truck_id}}</td>
+                            <td>{{m.value_fight}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="tableFooter">
+                        <div class="select2">
+                            <div class="select1">
+                                <select ng-model="pageList" ng-change="changePage(pageList)">
+                                    <option selected="selected" value="10">10</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="page">
+                            <div class="left" ng-click="up()" ng-class="{disabled:(page == 1)}">
+                                <img style="height: 60%" src="img/arrow_right.png">
+                            </div>
+                            <div class="input">
+                                <input type="text" ng-model="page"><span>/{{allPage1}}</span>
+                            </div>
+                            <div class="right" ng-click="next()" ng-class="{disabled:(allPage1 == page)}">
+                                <img style="height: 60%" src="img/arrow_right1.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom: 20px">
+            <div class="type_title"><p>用户背包道具</p></div>
+            <div class="row clear" style="padding-bottom: 55px">
+                <table class="table table-hover" id="bootstrap-table1">
+                    <tr class="infoTr">
+                        <th>道具名称</th>
+                        <th ng-repeat="m in item_info">
+                            {{m.name}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>剩余数量</td>
+                        <td ng-repeat="m in item_info">
+                            {{m.left_num}}
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>消耗数量</td>
+                        <td ng-repeat="m in item_info">
+                            {{m.use_num}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>购买数量</td>
+                        <td ng-repeat="m in item_info">
+                            {{m.buy_num}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>免费获得数量</td>
+                        <td ng-repeat="m in item_info">
+                            {{m.free_num}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+            <div style="margin-bottom: 20px">
+                <div class="type_title">
+                    <p>用户充值消费记录</p>
+                    <div class="title">
+                        <button ng-click="openDatePicker()">
+                            <p style="float: left">日期选择:</p>
+                            {{selectedDate}}
+                            <img src="img/down.png" style="float: right;padding-top: 3px;">
+                        </button>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="datePicker" ng-show="showDatePicker">
+                        <div class="date">
+                            <button ng-click="slectedDate(0)" style="border-left: 1px solid #cccccc">今天</button>
+                            <button ng-click="slectedDate(1)">昨日</button>
+                            <button ng-click="slectedDate(2)">近7日</button>
+                            <button ng-click="slectedDate(3)">近30日</button>
+                            <button ng-click="slectedDate(4)">全部</button>
+                        </div>
+                        <div class="picker">
+                            <span>自定</span>
+                            <div class="selectBox">
+                                <input id="jqueryPicker" ng-model="startDate"/>
+                                <img src="img/date.png">
+                            </div>
+                            <span>到</span>
+                            <div class="selectBox">
+                                <input id="jqueryPicker1" ng-model="endDate"/>
+                                <img src="img/date.png">
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="enter">
+                            <button style="float: left;color: rgb(45,141,214)" ng-click="enter()">确定</button>
+                            <div style="height: 20px;width: 1px;float: left;background-color: #cccccc;margin-left: 25px"></div>
+                            <button style="float: right;color: #444" ng-click="cancel()">取消</button>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clear">
+                    <table class="table table-hover" id="bootstrap-table2">
+                        <tr class="infoTr">
+                            <th>日期</th>
+                            <th>类型</th>
+                            <th>金额</th>
+                            <th>操作后账户余额</th>
+                            <th>具体操作</th>
+                            <th>状态</th>
+                        </tr>
+                        <tr ng-repeat="m in charge_info">
+                            <td><span ng-bind-html="m.date"></span></td>
+                            <td ng-if="m.type == 'pay'">消费</td>
+                            <td ng-if="m.type == 'charge'">充值</td>
+                            <td>{{m.gold}}</td>
+                            <td>{{m.left_gold}}</td>
+                            <td>{{m.action}}</td>
+                            <td>{{m.status}}</td>
+                        </tr>
+                    </table>
+                    <div class="tableFooter">
+                        <div class="select2">
+                            <div class="select1">
+                                <select ng-model="typecharge_list" ng-change="change_list(typecharge_list)">
+                                    <option selected="selected" value="10">10</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="page">
+                            <div class="left" ng-click="upcharge_list()" ng-class="{disabled:(pagecharge_list == 1)}">
+                                <img style="height: 60%" src="img/arrow_right.png">
+                            </div>
+                            <div class="input">
+                                <input type="text" ng-model="pagecharge_list"><span>/{{allPage}}</span>
+                            </div>
+                            <div class="right" ng-click="nextcharge_list()" ng-class="{disabled:(allPage == pagecharge_list)}">
+                                <img style="height: 60%" src="img/arrow_right1.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

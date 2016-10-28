@@ -1,0 +1,121 @@
+
+<div id="bottom_right">
+    <div id="richangshangpin">
+        <div class="layer_title">盈亏池&nbsp;&nbsp;<span style="font-size:14px;">当前金额：<span class="allcoin">0</span>(单位:KO币)</span></div>
+        <div class="layer_datatime">
+            <div class="layer_datatimeVal">日期选择：
+                <span>近30日</span>|
+                <span>2016.08.01 - 2016.08.03</span>
+                <img src="img/arrow_right.png" class="arrow_icon">
+            </div>
+            <div class="layer_datatimeVal1">
+                <div class="datatime_div1">
+                    <span data-key="0">今日</span>|
+                    <span data-key="1">昨日</span>|
+                    <span data-key="7">近7日</span>|
+                    <span data-key="30">近30日</span>|
+                    <span data-key="-1">全部</span>
+                </div>
+                <div class="datatime_div2">
+                    自定义<input placeholder="开始时间" type="text" id="start_time" class="laydate-icon" onclick="laydate();$('#laydate_box').style['margin-left']='0px';">到<input type="text"  id="end_time" placeholder="结束时间" class="laydate-icon" onclick="laydate();$('#laydate_box').style['margin-left']='-136px';">
+                </div>
+                <div class="datatime_div3">
+                    <div class="datatime_div3_1">取消</div>
+                    <div class="datatime_div3_2">确定</div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="exchange_div2">
+            
+            <div id="exchange_div2_1" class="selectitem">
+<!--
+                <div class="selectitem_list" data-key="hezuo"  data-value="合作中">
+                    <span>合作中</span>
+                    <img src="img/icon_arrow_down.png" class="icon_arrow_down">
+                </div>
+                <div class="selectitem_list"  data-key="weihezuo"  data-value="未合作">
+                    <span>未合作</span>
+                </div>
+-->
+               
+            </div>
+            
+            <input id="exchange_div2_4" style="left:120px;" type="text" placeholder="输入内容搜索">
+            <div id="exchange_div2_5" style="left:270px;">查询</div>
+            
+            <div id="exchange_div2_6_1"><img src="img/+.png">注入基金池</div>
+            <div id="exchange_div2_6"><img src="img/+.png">添加新事件</div>
+            <div id="exchange_div2_7"><img src="img/+.png">注入行为池</div>
+        </div>
+        
+        <div id="exchange_div3">
+            <ul>
+                
+            </ul>
+        </div>
+        <div id="exchange_div4">
+            <div id="exchange_div4_1" class="selectitem">
+<!--
+                <div class="selectitem_list" data-key="10" data-value="10">
+                    <span>10</span>
+                    <img src="img/icon_arrow_down.png" class="icon_arrow_down">
+                </div>
+-->
+            </div>
+            <span id="exchange_div4_2">条</span>
+            <img id="exchange_div4_3" src="img/download.png">
+            <div id="exchange_div4_4">
+                <img id="exchange_div4_4_1" src="img/page_return_no.png">
+                <img id="exchange_div4_4_2" src="img/page_go.png">
+                <input type="text" id="exchange_div4_4_3" value="1">
+                <span id="exchange_div4_4_4"> / 10</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="rolenum_pop">
+    <div id="exchangebus_pop1" style="width:380px;">
+        <div id="rolenum_pop_1">事件信息编辑</div>
+        <div id="rolenum_pop_2" style="z-index:2;">
+            <span>事件描述</span>
+            <input type="text" value="" id="eventclewinput" placeholder="事件描述">
+            <ul id="eventclewdiv">
+                <li data-type="测试1">测试1</li>
+                <li data-type="测试2">测试2</li>
+                <li data-type="测试3">测试3</li>
+                <li data-type="测试4">测试4</li>
+            </ul>
+        </div>
+         <div id="rolenum_pop_3">
+            <span>更该类型</span>
+            <div id="yinkui_add_radio_1">
+                <input type="radio" id="yinkui_add_radio" style="width:40px;left:0px;" name="yinkuijine" checked placeholder="联系方式"><span>增加盈亏金额</span>
+            </div>
+            <div id="yinkui_add_radio_2">
+                <input type="radio" id="yinkui_remove_radio" style="width:40px;left:0px;" name="yinkuijine" value="" placeholder="联系方式"><span>减少盈亏金额</span>
+            </div>
+        </div>
+         <div id="rolenum_pop_4">
+            <span>更改金额</span>
+            <input type="text" value="0" placeholder="更改金额">
+        </div>
+        <div id="rolenum_pop_0">
+            <div class="btn_cancel">放弃</div>
+            <div class="btn_save">保存</div>
+            <div class="xian_heng"></div>
+            <div class="xian_shu"></div>
+        </div>
+    </div>
+</div>
+<div id="exchange_name_list">
+    <div id="exchange_name_list_div">
+      <div id="exchange_name_list_title">商品详情</div>
+       <ul id="exchange_name_lists">
+           
+       </ul>
+        <div id="exchange_name_list_break">关闭</div>
+    </div>
+</div>

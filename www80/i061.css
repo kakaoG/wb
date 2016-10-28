@@ -1,0 +1,110 @@
+.i061 .clear{  clear: both;  }
+.i061 p{  padding: 0;  margin: 0;  }
+
+
+.i061{  margin-left: 200px;  width: 960px;  padding: 10px 30px 10px 10px;  position: relative; margin-top: 64px; }
+
+
+.i061 .title{  width: 100%;  height: 45px;  color: rgb(45,141,214);  line-height: 45px;  }
+.i061 .title p{  float: left;  }
+.i061 .title button{  float: right;  background-color: rgb(45,141,214);  color: white;  height: 25px;  border: none;  margin-top: 5px;  line-height: normal;  border-top-left-radius: 3px;  border-top-right-radius: 3px;  text-align: center;  width: 312px;  }
+
+.i061 .datePicker{  z-index: 888;width: 312px;position: absolute;  right: 30px;  top: 40px;  border-left: 1px solid #cccccc ;  border-right: 1px solid #cccccc ;  border-bottom: 1px solid #cccccc ;  border-bottom-left-radius: 5px;  border-bottom-right-radius: 5px;  background-color: white;  }
+.i061 .datePicker .date{  width: 100%;  background-color: white;  padding: 15px 0px;  text-align: center;  }
+.i061 .datePicker .date button{  background-color: inherit;  border: none;  border-right: 1px solid #cccccc;  padding: 0;  font-size: 17px;  color: #444;  margin-right: 0;  width: 55px; }
+.i061 .datePicker .picker{  width: 100%;padding: 10px 0;  }
+.i061 .datePicker .picker span{  float: left;  margin:  0 10px;  padding-top: 3px;  }
+.i061 .datePicker .selectBox{  width: 110px;  height: 24px;  float: left;  border: 1px solid #cccccc;  }
+.i061 .datePicker .selectBox p{  float: left;  padding: 0;  margin: 0;  }
+.i061 .datePicker .selectBox input{  width: 90px;  border: none;  }
+.i061 .datePicker .selectBox img{  float: right;  padding-top: 3px;  }
+.i061 .datePicker .enter{  width: 100%; border-top: 1px solid #cccccc;  padding: 10px 25px;  text-align: center;  }
+.i061 .datePicker .enter button{  width: 100px;background-color: inherit;  border: none;  font-size: 17px;  }
+
+
+.i061 .box{  width: 100%;  border: 1px solid #cccccc;  padding: 10px 10px 0px 10px;  position: relative;  background-color: white;  }
+.i061 .box .selectBox button{  padding-left: 10px;  padding-right: 10px;  height: 24px;  border: none;  background-color: rgb(196,40,53);  color: white;  margin-left: 10px;  border-radius: 5px;  margin-bottom: 10px;  }
+.i061 .box .selectBox input{  height: 24px;  border: 1px solid #000000;  margin-left: 10px;  }
+
+.i061 .box .selectBox .select1 {  width: 100px;  height: 24px;  overflow: hidden;  display:block;  }
+.i061 .box .selectBox .select2{  float: left;  border: 1px solid #000;  display: block;  height: 24px;  overflow: hidden;  width: 100px;  background: url(img/icon_arrow_down_hover.png) left 120px top 13px no-repeat;  }
+.i061 .box .selectBox select {  font-size: 14px;  position: relative;  height: 24px;  width: 100px;  color: #000;  border: none;  background-color: rgba(0,0,0,0);  }
+
+
+.i061 .row{margin: 0;}
+.i061 .row table thead th{  text-align: center;  border-right: 1px solid #cccccc;  vertical-align: middle;  height: 45px; border-bottom: none }
+.i061 .row table tbody td{  text-align: center;  border-right: 1px solid #cccccc;  vertical-align: middle;  word-wrap:break-word;  white-space:normal  }
+.i061 .row table{  border: 1px solid #cccccc;  }
+
+
+.i061 .tableFooter{  width: 100%;  height: 45px; margin-top:10px;  padding-top: 10px;}
+.i061 .tableFooter .select1 {  width: 50px;  height: 24px;  overflow: hidden;  display:block;  }
+.i061 .tableFooter .select2{  float: left;  border: 1px solid #000;  display: block;  height: 24px;  overflow: hidden;  width: 50px;  background: url(img/icon_arrow_down_hover.png) left 120px top 13px no-repeat;  }
+.i061 .tableFooter select {  font-size: 14px;  position: relative;  height: 24px;  width: 50px;  color: #000;  border: none;  background-color: rgba(0,0,0,0);  }
+
+
+.i061 .tableFooter .page{
+    float: right;
+}
+.i061 .tableFooter .page .left{
+    width: 30px;
+    height: 24px;
+    background-color: rgb(45,141,214);
+    float: left;
+    margin-right: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+.i061 .tableFooter .page .input{
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 5px;
+
+}
+.i061 .tableFooter .page .input span{
+    font-size: 17px;
+}
+.i061 .tableFooter .page input{
+    width: 35px;
+    height: 24px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+.i061 .tableFooter .page .right{
+    width: 30px;
+    height: 24px;
+    background-color: rgb(45,141,214);
+    float: left;
+    border-radius: 5px;
+    text-align: center;
+}
+.i061 .tableFooter .page .disabled{
+    background-color: #CCCCCC!important;
+    pointer-events: none;
+}
+.i061 #bootstrap-table {padding-bottom: 20px}
+.i061 #bootstrap-table caption {position: absolute;  bottom: 15px;  height: 24px;  width: auto;  left: 70px;  }
+.i061 #bootstrap-table caption a{height: 35px;width: 110px; padding: 0 10px;background: url("img/download.png") no-repeat;border: none}
+
+.i061 #bootstrap-table caption a:hover{background: url("img/download_hover.png") no-repeat}
+
+
+.i061 .dol_btn{ float:left; margin-left:10px; width:110px; height:32px; background:url(img/download.png) no-repeat;}
+.i061 .dol_btn:hover{ background:url(img/download_hover.png) no-repeat;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<div ng-include src="'menu.html'"></div>
+
+<div class="i051">
+    <div class="head">短消息推送</div>
+    <p></p>
+    <div class="bgBox">
+        <div class="space_box">
+            <p>消息类容</p>
+
+            <textarea class="form-control" rows="6" ng-model="info.msg"
+                      placeholder="请输入具体消息详情,字数最好不要超过50个字符!"></textarea>
+
+            <p style="text-align: right;margin-top: 5px">{{info.tips}}</p>
+            <p></p>
+            <span>目标平台</span>
+            <div class="btn-group " style="margin:  0 0 0 30px;">
+                <button type="button" id="dLabel" class="btn btn-default dropdown-toggle sptf_item" ng-click="menu_info()">
+                    {{info.selectString}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" ng-show="show_menu_info" style="display:block;">
+                    <li><a ng-click="info.selectPlat(0)">全部</a></li>
+                    <li><a ng-click="info.selectPlat(1)">IOS</a></li>
+                    <li><a ng-click="info.selectPlat(2)">ANDROID</a></li>
+                </ul>
+            </div>
+            <p></p>
+            <div><span>用户地区</span>
+                <input type="text" class="form-control diqubox sptf_item" id="cityChoice" ng-model="info.provinceCity">
+            </div>
+            <p></p>
+            <span>发送时间</span>
+            <button type="button" class="btn btn-default sptf_item" ng-class="{'send_select':info.sendType==0}"
+                    ng-click="info.setSendType(0)" style="margin-left: 30px">立即发送
+            </button>
+            <button type="button" class="btn btn-default sptf_item" ng-class="{'send_select':info.sendType==1}"
+                    ng-click="info.setSendType(1)">定时发送
+            </button>
+            <div style="display: inline-block" ng-show="info.sendType==1"><input type="text"
+                                                                                 class="form-control diqubox sptf_item"
+                                                                                 ng-model="info.push_time"><span>小时后发送</span>
+            </div>
+            <p></p>
+            <div>
+                <span>紧急通知</span>
+                <div class="btn-group " style="margin:  0 0 0 30px;">
+                    <button type="button" id="dLabel_is_urgent" class="btn btn-default dropdown-toggle sptf_item" ng-click="menu_info_is_urgent()">
+                        {{info.is_urgentString}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel_is_urgent" ng-show="show_is_urgent" style="display:block;">
+                        <li><a ng-click="select_is_urgent(false)">否</a></li>
+                        <li><a ng-click="select_is_urgent(true)">是</a></li>
+                    </ul>
+                </div>
+                <div style="display: inline-block;margin-left: 30px;" ng-show="info.is_urgent==true">
+                    <span>通知时限</span>
+                    <input type="text" class="form-control diqubox sptf_item" style="width: 50px;margin-left: 10px;" ng-model="info.urgent_time"><span>小时内</span>
+                </div>
+            </div>
+            <hr class="featurette-divider">
+            <button type="button" class="btn btn-primary btn-lg btn_fasong" ng-click="info.sendData()">发送</button>
+        </div>
+
+    </div>
+
+
+</div>

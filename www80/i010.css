@@ -1,0 +1,263 @@
+/**/
+.i010 {
+	position: absolute;
+	top: 71px;
+	width: 100%;
+	padding-left: 188px;
+	padding-right: 12px;
+}
+.i010 label{
+	max-width: inherit;
+}
+.i010 .must{
+	position: relative;
+}
+.i010 .login{
+	text-align: center;
+}
+.i010 .spq>span{
+	display: inline-block;
+	width: 300px;
+	float: left;
+}
+.i010 .spq>span>span{
+	display: inline-block;
+	width: 90px;
+}
+.i010 .login>div{
+	margin: 20px 0;
+}
+.i010 .login>div input{
+	border: 1px solid #E8E8E8;
+	height: 30px;
+	width: 200px;
+	border-radius: 4px;
+}
+.i010 .login>div span{
+	display: inline-block;
+	width: 200px;
+	text-align: left;
+}
+.i010 .selectspk .glyphicon{
+	color: #3598DB;
+	cursor: pointer;
+}
+.i010 .selectspk{
+	margin: 20px 0;
+}
+.i010 .curson{
+	cursor: pointer;
+}
+.i010 a{
+	cursor: pointer;
+}
+.i010 .zuobia{
+	cursor: default;
+}
+.i010 .sel{
+	border: 1px solid #9BC4F7;
+	border-radius: 1000px;
+	display: inline-block;
+	background: #fff;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	vertical-align: middle;
+	font-size: 12px;
+	text-align: center;
+	padding-top: 3px;
+}
+.i010 .bel{
+	position: absolute;
+	left: -32px;
+	top: 30px;
+	border: 1px solid #9BC4F7;
+	border-radius: 1000px;
+	display: inline-block;
+	background: #fff;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	vertical-align: middle;
+	font-size: 12px;
+	text-align: center;
+	padding-top: 3px;
+}
+.i010 .del{
+	position: absolute;
+	left: 16px;
+	top: 29px;
+	border: 1px solid #9BC4F7;
+	border-radius: 1000px;
+	display: inline-block;
+	background: #fff;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	vertical-align: middle;
+	font-size: 12px;
+	text-align: center;
+	padding-top: 3px;
+}
+.i010 td span{
+	display: inline-block;
+	width: 150px;
+}
+.i010 .selectspk>span{
+	width: 25%;
+	float: left;
+	text-align: center;
+	margin: 10px 0;
+}
+.i010 .selectspk>span input{
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top:6px;
+}
+.i010 .must:before{
+	content: '*';
+
+	color: red;
+	font-size: 22px;
+}
+.i010 .head{
+	color: #3598DB;
+}
+.i010 .head1{
+	color: #3598DB;
+	padding: 10px 0;
+}
+.i010 .btg button{
+	margin: 0 10px;
+}
+.i010 .sy{
+	color: #3598DB;
+	line-height: 30px;
+	margin-left: 150px;
+}
+
+
+.i010 .nav1{
+	border-bottom: 1px solid #3598DB;
+	margin-top: 20px;
+}
+.i010 .nav1>span{
+	padding: 10px;
+	display: inline-block;
+	color: #3598DB;
+	cursor: pointer;
+	border: 1px solid #E8E8E8;
+	border-bottom: none;
+	float: left;
+}
+.i010 .nav1 .active{
+	background: #3598DB;
+	color: #fff;
+}
+.i010 .content1{
+	padding: 20px 0;
+}
+.i010 .search>*{
+  float: left;
+}
+.i010 .search input{
+	float: left;
+	border: 1px solid #E8E8E8;
+	height: 30px;
+	width: 150px;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+.i010 .content1 img{
+	height: 32px;
+	margin-left: 40px;
+	cursor: pointer;
+}
+.i010 .content1 .text{
+	color: #3598DB;
+}
+.i010 .search button{
+	border: 0;
+	float: left;
+	width: 60px;
+	height: 30px;
+	line-height: 30px;
+	background: #3598DB;
+	color: #fff;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.i010 .content2{
+	width: 100%;
+	height: 400px;
+}
+.i010 .center{
+	text-align: center;
+}
+.i010 table{
+	margin: 20px 0;
+}
+.i010 .content4>span{
+	line-height: 30px;
+}
+.i010 .content4 .text1{
+	margin-right: 10px;
+}
+
+.i010 .content4 input{
+	border: 1px solid #E8E8E8;
+	height: 30px;
+	width: 80px;
+	border-radius: 4px;
+	position: relative;
+	top:-10px;
+	text-align: center;
+}
+.i010 .content4 .text{
+	position: relative;
+	top:-10px;
+}
+.i010 select{
+	 height: 30px;
+	background: #fff;
+	border: 1px solid #E8E8E8;
+	border-radius: 4px;
+	float: left;
+	margin-right: 10px;
+}
+.i010 .down{
+	display: inline-block;
+	width: 110px;
+	height: 32px;
+	background:url("img/download.png");
+}
+.i010 .down:hover{
+	background:url("img/download_hover.png");
+}
+.i010 .ff{
+	float: left;
+}
+.i010 .fr{
+	float: right;
+	 }
+.i010 .left{
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background:url("img/page_return_no.png");
+}
+.i010 .left.active{
+	background:url("img/page_return.png");
+}
+
+.i010 .right{
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background:url("img/page_go_no.png");
+}
+
+.i010 .right.active{
+	background:url("img/page_go.png");
+}

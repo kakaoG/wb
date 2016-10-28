@@ -1,0 +1,295 @@
+<div ng-include src="'menu.html'"></div>
+
+<div class="i070">
+    <div id="firstShow">
+    <div class="head">新用户登录福利控制</div>
+    <p></p>
+    <div class="bgBox">
+        <div class="space_box">
+            <span>该次福利投放金额</span>
+            <div class="btn-group " style="margin:  0 0 0 30px;">{{datas.send_money}}</div>
+            <p></p>
+            <span>该次获取人数限制</span>
+            <div class="btn-group " style="margin:  0 0 0 30px;">{{datas.target_person_num}}</div>
+            <p></p>
+            <span>该次福利发放后新增人数</span>
+            <div class="btn-group " style="margin:  0 0 0 30px;">{{datas.person_add_num}}</div>
+            <p></p>
+            <span>当前剩余福利发放金额</span>
+            <div class="btn-group " style="margin:  0 0 0 30px;">{{datas.left_money}}</div>
+            <p></p>
+            <span>该次福利发放价值回收时间</span>
+            <div class="btn-group " style="margin:  0 0 0 30px;">{{datas.recycle_date==null?'':datas.recycle_date*1000 | date:'yyyy-MM-dd'}}</div>
+            <p></p>
+
+            <hr class="featurette-divider">
+            <div style="text-align:center;">
+                <button type="button" class="btn btn-primary btn-lg btn_fasong" ng-click="showPswd()">取消该次福利发放</button>
+                <button type="button" class="btn btn-primary btn-lg btn_fasong" ng-click="addWelFare()">新增福利发放项目</button>
+                <button type="button" class="btn btn-primary btn-lg btn_fasong" ng-click="showNewWelFare()">查看新用户福利发放记录</button>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <!-- 取消该次福利发放窗口 -->
+    <div class="i04_remind add_ku" id="pswd_div" style="width:360px;">
+        <h3>输入操作密码，确定取消该次福利发放</h3>
+        <input type="password" class="i04_ku_name" ng-model="pswd">
+        <div class="i04_btn_box">
+            <span class="i04_btn not" ng-click="cancelNot()">取消</span>
+            <span class="i04_btn yes" ng-click="cancelYes()">确定</span>
+        </div>
+    </div>
+
+    <!--新增福利发放项目-->
+    <div class="i04_remind i041" id="change_suipian_remind" style="width:360px;">
+        <div class="suipian_box">
+            <div class="suipianhao">
+                <span>发放金额：</span>
+                <input type="text" class="suipianshu_text" ng-model="welfare_add.send_money">
+            </div>
+            <div class="suipianhao">
+                <span>发放人数：</span>
+                <input type="text" class="suipianshu_text" ng-model="welfare_add.target_person_num">
+            </div>
+            <div class="suipianhao">
+                <span>福利价值回收时间：</span>
+                <input type="text" class="i04_list search_date" id="recycle_date_id">
+            </div>
+        </div>
+        <div class="i04_btn_box">
+            <span class="i04_btn not" ng-click="changeSuipianNot()">取消</span>
+            <span class="i04_btn yes" ng-click="changeSuipianYes()">确定</span>
+        </div>
+    </div>
+    <div class="i04_remind add_ku" id="pswd_div1" style="width:360px;">
+        <h3>输入操作密码，确定该次福利发放</h3>
+        <input type="password" class="i04_ku_name" ng-model="welfare_add.check_password">
+        <div class="i04_btn_box">
+            <span class="i04_btn not" ng-click="cancelNot1()">取消</span>
+            <span class="i04_btn yes" ng-click="cancelYes1()">确定</span>
+        </div>
+    </div>
+
+
+    <!--查看新用户福利发放记录-->
+    <div class="menu_ku_edit" id="menu_ku_edit">
+
+        <div class="i052 i04" style="padding:0;">
+
+            <div class="lucky_title_box">
+
+                <div class="layer_datatime" style="top:70px;left:10px;">
+                    <div class="layer_datatimeVal" ng-click="iconState()">日期选择：
+                        <span>全部</span>|
+                        <span></span>
+                        <img src="img/arrow_right.png" class="arrow_icon">
+                    </div>
+                    <div class="layer_datatimeVal1">
+                        <div class="datatime_div1">
+                            <span ng-click="selectTimes('今日')">今日</span>|
+                            <span ng-click="selectTimes('昨日')">昨日</span>|
+                            <span ng-click="selectTimes('近7日')">近7日</span>|
+                            <span ng-click="selectTimes('近30日')">近30日</span>|
+                            <span ng-click="selectTimes('全部')">全部</span>
+                        </div>
+                        <div class="datatime_div2">
+                            自定<input type="text" id="start_time_id" class="laydate-icon">
+                            到<input type="text"  id="end_time_id" class="laydate-icon">
+                        </div>
+                        <div class="datatime_div3">
+                            <div class="datatime_div3_1" ng-click="iconState()">取消</div>
+                            <div class="datatime_div3_2" ng-click="selectQueryDate()">确定</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--表格-->
+            <table class="lucky_table table-bordered table-striped table-responsive">
+                <tr class="tr1">
+                    <td colspan="10" class="head"><span style="float: left;line-height: 30px;">新用户福利发放记录</span><span class="i04_search_btn" ng-click="returnMenuKu()">返回</span></td>
+                </tr>
+                <tr class="tr1">
+                    <td colspan="10" class="head"></td>
+                </tr>
+                <tr class="tr2">
+                    <td colspan="10">
+                        <!--搜索栏-->
+                        <div class="search">
+                            <div class="i04_list search_type" ng-click="showList()">
+                                <span>{{dataGet.searchType}}</span>
+                                <ul class="i04_show type_list" id="type_list_ku_edit">
+                                    <li>全部</li>
+                                    <li>管理员名称</li>
+                                </ul>
+                            </div>
+                            <input type="search" placeholder="输入内容搜索" class="i04_search_box" ng-model="dataGet.key">
+                            <span class="i04_search_btn" ng-click="dataGetSearch()">查询</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>发放日期</th>
+                    <th>结束日期</th>
+                    <th>回收日期</th>
+                    <th>操作管理员名称</th>
+                    <th>发放金额</th>
+                    <th>回收金额</th>
+                    <th>目标发放人数</th>
+                    <th>已发放人数</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                <tr ng-show="dataGet_datas.welfare_list.length==0">
+                    <td colspan="10">当前无符合条件数据</td>
+                </tr>
+                <tr ng-repeat="x in dataGet_datas.welfare_list">
+                    <td>{{x.send_date*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+                    <td>{{x.end_time<1?'-':x.end_time*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+                    <td>{{x.recycle_date*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+                    <td>{{x.admin_name}}</td>
+                    <td>{{x.send_money}}</td>
+                    <td>{{x.recycle_money==-1?"-":x.recycle_money}}</td>
+                    <td>{{x.target_person_num}}</td>
+                    <td>{{x.get_person_num}}</td>
+                    <td>{{x.status=="sending"?"发放中":"已结束"}}</td>
+                    <td>
+                        <span class="i40_table_btn" ng-click="show_personGet(x.welfare_id)">查看获取用户</span>
+                    </td>
+                </tr>
+            </table>
+            <!--页面跳转栏-->
+            <div class="con">
+                <div class="i04_dol">
+                    <div class="i04_list dol_num" ng-click="showList1()">
+                        <span>{{dataGet.pageSizeSelect}}</span>
+                        <ul class="i04_show dol_list" id="pageSizeSelect">
+                            <li>10</li>
+                            <li>30</li>
+                        </ul>
+                    </div>
+                    <span class="tiao">条</span>
+                    <div class="dol_btn" ng-click="export_xlsx()"></div>
+                </div>
+                <div class="i04_change_page">
+                    <div class="i04_return_btn" ng-show="dataGet.pageNumber!=1" ng-click="dataGet_prev()"></div>
+                    <div class="i04_return_btn_no" ng-show="dataGet.pageNumber==1"></div>
+                    <input type="text" ng-model="dataGet.pageNumber" class="page">
+                <span>
+                /<span class="page_num">{{dataGet_datas.total_page}}</span>
+                </span>
+                    <div class="i04_go_btn" ng-show="dataGet.pageNumber<dataGet_datas.total_page" ng-click="dataGet_next()"></div>
+                    <div class="i04_go_btn_no" ng-show="dataGet.pageNumber==dataGet_datas.total_page"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--查看获取用户-->
+    <div class="menu_ku_edit" id="menu_ku_edit1">
+
+        <div class="i052 i04" style="padding:0;">
+
+            <div class="lucky_title_box">
+
+                <div class="layer_datatime" style="top:70px;left:10px;">
+                    <div class="layer_datatimeVal" ng-click="iconState1()">日期选择：
+                        <span>全部</span>|
+                        <span></span>
+                        <img src="img/arrow_right.png" class="arrow_icon">
+                    </div>
+                    <div class="layer_datatimeVal1">
+                        <div class="datatime_div1">
+                            <span ng-click="selectTimes1('今日')">今日</span>|
+                            <span ng-click="selectTimes1('昨日')">昨日</span>|
+                            <span ng-click="selectTimes1('近7日')">近7日</span>|
+                            <span ng-click="selectTimes1('近30日')">近30日</span>|
+                            <span ng-click="selectTimes1('全部')">全部</span>
+                        </div>
+                        <div class="datatime_div2">
+                            自定<input type="text" id="start_time_id1" class="laydate-icon">
+                            到<input type="text"  id="end_time_id1" class="laydate-icon">
+                        </div>
+                        <div class="datatime_div3">
+                            <div class="datatime_div3_1" ng-click="iconState1()">取消</div>
+                            <div class="datatime_div3_2" ng-click="selectQueryDate1()">确定</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--表格-->
+            <table class="lucky_table table-bordered table-striped table-responsive">
+                <tr class="tr1">
+                    <td colspan="5" class="head"><span style="float: left;line-height: 30px;">查看获取用户</span><span class="i04_search_btn" ng-click="returnDataGet()">返回</span></td>
+                </tr>
+                <tr class="tr1">
+                    <td colspan="5" class="head"></td>
+                </tr>
+                <tr class="tr2">
+                    <td colspan="5">
+                        <!--搜索栏-->
+                        <div class="search">
+                            <div class="i04_list search_type" ng-click="showList2()">
+                                <span>{{personGet.searchType}}</span>
+                                <ul class="i04_show type_list" id="type_list_ku_edit1">
+                                    <li>全部</li>
+                                    <li>用户昵称</li>
+                                    <li>用户账号</li>
+                                </ul>
+                            </div>
+                            <input type="search" placeholder="输入内容搜索" class="i04_search_box" ng-model="personGet.key">
+                            <span class="i04_search_btn" ng-click="personGetSearch()">查询</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>获取日期</th>
+                    <th>用户名称</th>
+                    <th>用户账号</th>
+                    <th>获取价值</th>
+                    <th>新手剩余价值</th>
+                </tr>
+                <tr ng-show="personGet_datas.person_list.length==0">
+                    <td colspan="5">当前无符合条件数据</td>
+                </tr>
+                <tr ng-repeat="x in personGet_datas.person_list">
+                    <td>{{x.get_date*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+                    <td>{{x.person_name}}</td>
+                    <td>{{x.login_name}}</td>
+                    <td>{{x.get_value}}</td>
+                    <td>{{x.left_money}}</td>
+                </tr>
+            </table>
+            <!--页面跳转栏-->
+            <div class="con">
+                <div class="i04_dol">
+                    <div class="i04_list dol_num" ng-click="showList3()">
+                        <span>{{personGet.pageSizeSelect}}</span>
+                        <ul class="i04_show dol_list" id="pageSizeSelect1">
+                            <li>10</li>
+                            <li>30</li>
+                        </ul>
+                    </div>
+                    <span class="tiao">条</span>
+                    <div class="dol_btn" ng-click="export_xlsx_personGet()"></div>
+                </div>
+                <div class="i04_change_page">
+                    <div class="i04_return_btn" ng-show="personGet.pageNumber!=1" ng-click="personGet_prev()"></div>
+                    <div class="i04_return_btn_no" ng-show="personGet.pageNumber==1"></div>
+                    <input type="text" ng-model="personGet.pageNumber" class="page">
+                <span>
+                /<span class="page_num">{{personGet_datas.total_page}}</span>
+                </span>
+                    <div class="i04_go_btn" ng-show="personGet.pageNumber<personGet_datas.total_page" ng-click="personGet_next()"></div>
+                    <div class="i04_go_btn_no" ng-show="personGet.pageNumber==personGet_datas.total_page"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

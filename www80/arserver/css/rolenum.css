@@ -1,0 +1,133 @@
+#rolenum_list1,#rolenum_list2,#rolenum_list3{
+    position: relative;
+    width: 100%;
+    line-height: 40px;
+    margin-top:50px;
+    height: 40px;
+}
+.rolenum_1,.rolenum_2{
+    font-size:16px;
+    color:#666666;
+    position: absolute;
+    top:0px;
+}
+.rolenum_1{
+    left:70px;
+}
+.rolenum_2{
+    left:280px;
+}
+.rolenum_3{
+    left:400px;
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    line-height: 30px;
+    text-align: center;
+    right: 20px;
+    cursor: pointer;
+    background-color: #e2443d;
+    color:white;
+    position: absolute;
+    top:0px;
+    bottom: 0px;
+    margin: auto 0px;
+}
+
+#rolenum_pop,.share_pop{
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    left:0px;
+    top:0px;
+    display: none;
+}
+#rolenum_pop1{
+    position: absolute;
+    background-color: white;
+    width: 340px;
+    height: 200px;
+    margin:  auto;
+    left:0px;
+    right: 0px;
+    top:0px;
+    bottom: 0px;
+    
+    border-radius: 6px;
+}
+#rolenum_pop_1{
+    position: relative;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+    font-size:18px;
+    color:#3e97d3;
+    width: 100%;
+}
+#rolenum_pop_2{
+    position: relative;
+    margin-top: 30px;
+    line-height: 30px;
+    height: 30px;
+    font-size:14px;
+    color:#3e97d3;
+    width: 100%;
+}
+#rolenum_pop_2 span,#rolenum_pop_3 span,#rolenum_pop_4 span{
+    position: absolute;
+    left:30px;
+    color:#878787;
+}
+#rolenum_pop_2 input,#rolenum_pop_3 input,#rolenum_pop_4 input{
+    position: absolute;
+    left:110px;
+    height: 24px;
+    top:0px;
+    bottom: 0px;
+    margin: auto 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width:180px;
+}
+#rolenum_pop_0{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.btn_cancel{
+    position: absolute;
+    width: 50%;
+    left:0px;
+    top:0px;
+    color:#e6534e;
+    cursor: pointer;
+}
+.btn_save{
+    position: absolute;
+    width: 50%;
+    right:0px;
+    top:0px;
+    color:#5fa9df;
+    cursor: pointer;
+}
+.xian_heng{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0,0,0,0.3);
+}
+.xian_shu{
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    left:0px;
+    right: 0px;
+    margin: 0px auto;
+    background-color: rgba(0,0,0,0.3);
+}

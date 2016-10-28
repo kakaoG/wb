@@ -1,0 +1,298 @@
+<div ng-include src="'menu.html'"></div>
+
+<div class="i010">
+    <div class="head">商品投放</div>
+    <div class="nav1 clearfix">
+        <span class="{{navi==0?'active':''}}" ng-click="searchtable1();gonav(0)">地图商品投放</span>
+        <span class="{{navi==1?'active':''}}" ng-click="searchtable2();gonav(1)">精灵商品投放</span>
+        <span class="{{navi==2?'active':''}}" ng-click="searchtable3();gonav(2)">基金库商品投放</span>
+    </div>
+    <div ng-show="navi==0">
+        <div class="content1 clearfix">
+        <span class="search">
+            <input type="text" placeholder="请输入地址" id="key1">
+            <button id="search1">查询</button>
+         </span>
+            <img src="img/i010_1.png" ng-click="addsq()">
+            <span class="text curson" ng-click="addsq()">新建商圈</span>
+        </div>
+        <div class="content2" id="allmap"></div>
+        <div class="head1">当前投放配置监控</div>
+        <div class="content3 clearfix">
+            <select ng-model="table1fix.state">
+                <option value="">状态</option>
+                <option value="run">进行中</option>
+                <option value="hide">隐藏中</option>
+            </select>
+            <select ng-model="table1fix.search_type">
+                <option value="">查询类型</option>
+                <option value="circle_name">商圈名称</option>
+                <option value="circle_id">商圈ID</option>
+                <option value="DGT_name">商品库ID</option>
+            </select>
+            <span class="search">
+            <input type="text" placeholder="请输入值" ng-model="table1fix.key">
+            <button ng-click="searchtable1()">查询</button>
+         </span>
+        </div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>修改时间</td>
+                <td>商圈名称</td>
+                <td>商圈ID</td>
+                <td>投放定点密度</td>
+                <td>选择商品库及对比</td>
+                <td>状态</td>
+                <td>操作</td>
+            </tr>
+            <tr ng-repeat="x in table1" ng-click="showmap($index,$event)">
+                <td>{{x.time}}</td>
+                <td>{{x.name}}</td>
+                <td>{{x.id}}</td>
+                <td>{{x.numb}}</td>
+                <td>
+                    <div ng-repeat="y in x.pre">{{y.DGT_name}} {{y.percent}}%</div>
+                </td>
+                <td>{{x.state=='run'?'进行中':'隐藏中'}}</td>
+                <td>
+                    <a ng-click="toufan($index)">编辑投放</a>
+                    <a ng-click="hidesq(x.state,$index,x.id)">{{x.state=='run'?'隐藏商圈':'解除隐藏'}}</a>
+                    <a ng-click="deletesq($index,x.id)">移除商圈</a>
+                </td>
+            </tr>
+        </table>
+        <div class="content4">
+            <select class="ff" style="margin-right: 0" ng-model="table1fix.page_size" ng-change="searchtable1()">
+                <option ng-value="10" ng-selected="true">10</option>
+                <option ng-value="30">30</option>
+            </select>
+            <span class="ff text1">条</span>
+
+            <span class="down " ng-click="export_xlsx()"></span>
+            <span class="fr">
+        <span class="left {{table1fix.page_num>1?'active':''}}" ng-click="table1left(table1fix.page_num>1)"></span>
+        <input type="text" ng-model="table1fix.page_num">
+        <span class="text">/{{total_page1}}</span>
+        <span class="right {{table1fix.page_num<total_page1?'active':''}}"
+              ng-click="table1right(table1fix.page_num<total_page1)"></span>
+    </span>
+        </div>
+    </div>
+    <div ng-show="navi==1">
+        <div class="head" style="margin-top: 20px;">商圈投放</div>
+        <table class="table">
+            <tr>
+                <td colspan="3"><span>选择商品库:</span>
+                    <button type="button" class="btn btn-primary" ng-click="addspk(1)">添加商品</button>
+                </td>
+            </tr>
+
+        </table>
+        <div class="spq clearfix">
+            <span ng-repeat="y in shangku2"><span>{{y.name}}:</span><input type="text"
+                                                                           ng-model="shangku2[$index].percent">%</span>
+        </div>
+        <div class="center btg">
+            <button type="button" class="btn btn-primary" ng-click="h4navi=0;i3out()">退出</button>
+            <button type="button" class="btn btn-primary" ng-click="peizhi1()">配置</button>
+
+        </div>
+    </div>
+    <div ng-show="navi==2">
+
+        <div class="content1 clearfix">
+        <span class="search">
+            <input type="text" placeholder="请输入地址" id="key2">
+            <button id="search2">查询</button>
+         </span>
+            <span class="sy">当前基金库余额:￥{{price2}}</span>
+        </div>
+        <div class="content2" id="allmap2"></div>
+        <div class="head1">当前投放配置监控</div>
+        <div class="content3 clearfix">
+            <select ng-model="table3fix.search_type">
+                <option value="">查询类型</option>
+                <option value="circle_name">商圈名称</option>
+                <option value="circle_id">商圈ID</option>
+            </select>
+            <span class="search">
+            <input type="text" placeholder="请输入值" ng-model="table3fix.key">
+            <button ng-click="searchtable3()">查询</button>
+         </span>
+        </div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>上次投放时间</td>
+                <td>商圈名称</td>
+                <td>商圈ID</td>
+                <td>投放定点个数</td>
+                <td>操作</td>
+            </tr>
+            <tr ng-repeat="x in table3" ng-click="showmap2($index,$event)">
+                <td>{{x.update_time}}</td>
+                <td>{{x.name}}</td>
+                <td>{{x.circle_id}}</td>
+                <td>{{x.density}}</td>
+                <td>
+                    <a ng-click="searchtable7(x.circle_id,GetRandomNum($index,'latitude'),GetRandomNum($index,'longitude'))">选择该商圈投放5号碎片</a>
+                </td>
+            </tr>
+        </table>
+        <div class="content4">
+            <select class="ff" style="margin-right: 0" ng-model="table3fix.page_size" ng-change="searchtable3()">
+                <option ng-value="10" ng-selected="true">10</option>
+                <option ng-value="30">30</option>
+            </select>
+            <span class="ff text1">条</span>
+
+            <span class="down " ng-click="export_xlsx_fund()"></span>
+            <span class="fr">
+        <span class="left {{table3fix.page_num>1?'active':''}}" ng-click="table3left(table3fix.page_num>1)"></span>
+        <input type="text" ng-model="table3fix.page_num">
+        <span class="text">/{{total_page2}}</span>
+        <span class="right {{table3fix.page_num<total_page2?'active':''}}"
+              ng-click="table3right(table3fix.page_num<total_page2)"></span>
+    </span>
+            </span>
+        </div>
+    </div>
+    <div ng-show="navi==3">
+        <div class="head">商品投放</div>
+        <table class="table">
+            <tr>
+                <td><span>商圈名称:</span></td>
+                <td colspan="2"><input type="text" ng-model="table4.name"></td>
+                </td></tr>
+            <tr>
+                <td><span>投放定点密度:</span></td>
+                <td colspan="2"><input type="text" ng-model="table4.density" placeholder="每公里N个"></td>
+            </tr>
+            <tr>
+                <td>经度区间:<input type="text" ng-model="table4.top_left.longitude">----<input type="text"
+                                                                                            ng-model="table4.low_right.longitude">
+                </td>
+                <td>纬度区间:<input type="text" ng-model="table4.low_right.latitude">----<input type="text"
+                                                                                            ng-model="table4.top_left.latitude">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"><span>选择商品库:</span>
+                    <button type="button" class="btn btn-primary" ng-click="addspk()">添加商品</button>
+                </td>
+            </tr>
+
+        </table>
+        <div class="spq clearfix">
+            <span ng-repeat="y in table4.pre"><span>{{y.DGT_name}}:</span><input type="text"
+                                                                                 ng-model="table4.pre[$index].percent">%</span>
+        </div>
+        <div class="center btg">
+            <button type="button" class="btn btn-primary" ng-click="i3out()">退出</button>
+            <button type="button" class="btn btn-primary" ng-click="peizhi3()">配置</button>
+        </div>
+    </div>
+    <div ng-show="navi==4">
+        <div class="head">商品录入>选择商品库</div>
+        <div class="selectspk clearfix">
+            <span ng-repeat="y in table5"><input type="checkbox"
+                                                 ng-model="table5[$index].select"><span>{{y.DGT_name}}</span><span
+                    class="glyphicon glyphicon-edit" ng-click="editku(y)"></span></span>
+        </div>
+        <div class="center btg">
+            <button type="button" class="btn btn-primary" ng-click="navi=h4navi">返回</button>
+            <button type="button" class="btn btn-primary" ng-click="n4peizhi()">配置</button>
+
+            <button type="button" class="btn btn-primary" ng-click="quanxuan4(true)">全选</button>
+            <button type="button" class="btn btn-primary" ng-click="quanxuan4(false)">全不选</button>
+        </div>
+    </div>
+    <div ng-show="navi==5">
+        <!--<div class="head">商品录入>选择商品库</div>-->
+        <div class="login">
+            <div class="">请输入确认密码</div>
+            <div class="">账号：<span>{{username}}</span></div>
+            <div class="">密码：<input type="text" placeholder="请输入登录密码" ng-model="password"></div>
+        </div>
+
+        <div class="center btg">
+            <button type="button" class="btn btn-primary" ng-click="navi=0">取消</button>
+            <button type="button" class="btn btn-primary" ng-click="nai5ok()">确定</button>
+        </div>
+    </div>
+    <div ng-show="navi==6">
+
+        <div class="content1 clearfix">
+
+            <div class="head1">商品投放 > 商品选择投放</div>
+            <div class="head1">当前基金库余额:{{price7}}</div>
+
+            <div class="content3 clearfix">
+                <select ng-model="table7fix.search_type">
+                    <option value="">查询类型</option>
+                    <option value="name">商品名称</option>
+                    <option value="truck_id">商品ID</option>
+                    <option value="merchant_name">赞助商名称</option>
+                    <option value="merchant_id">赞助商ID</option>
+                </select>
+                <span class="search">
+            <input type="text" placeholder="请输入值" ng-model="table7fix.key">
+            <button ng-click="searchtable7()">查询</button>
+         </span>
+            </div>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <td>商品名称</td>
+                    <td>商品ID</td>
+                    <td>商品价格</td>
+                    <td>最低可视等级</td>
+                    <td>赞助商名称</td>
+                    <td>赞助商ID</td>
+                    <td>操作</td>
+                </tr>
+                <tr ng-repeat="x in table7">
+
+                    <td>{{x.name}}</td>
+                    <td>{{x.truck_id}}</td>
+                    <td>{{x.price}}</td>
+                    <td>{{x.show_level}}</td>
+                    <td>{{x.merchant_name}}</td>
+                    <td>{{x.merchant_id}}</td>
+                    <td>
+                        <a ng-click="starttoufan5(x.truck_id)">投放5号碎片</a>
+                    </td>
+                </tr>
+            </table>
+            <div class="content4">
+                <select class="ff" style="margin-right: 0" ng-model="table7fix.page_size"  ng-change="searchtable7()">
+                    <option ng-value="10" ng-selected="true">10</option>
+                    <option ng-value="30">30</option>
+                </select>
+                <span class="ff text1">条</span>
+
+                <span class="down "></span>
+                <span class="fr">
+        <span class="left {{table7fix.page_num>1?'active':''}}" ng-click="table7left(table7fix.page_num>1)"></span>
+        <input type="text" ng-model="table7fix.page_num">
+        <span class="text">/{{total_page7}}</span>
+        <span class="right {{table7fix.page_num<total_page7?'active':''}}"
+              ng-click="table7right(table7fix.page_num<total_page7)"></span>
+    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="xcConfirm" id="mypop" ng-show="popshow">
+        <div class="xc_layer" ></div>
+        <div class="popBox">
+            <div class="ttBox"><a class="clsBtn" ng-click="popshow=false"></a><span class="tt">请输入时间</span></div>
+            <div class="txtBox"><div style="font-size: 14px;" id="jqxWidget"></div></div>
+            <div class="btnArea">
+                <div class="btnGroup"><a class="sgBtn ok" ng-click="slectTime()">确定</a></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

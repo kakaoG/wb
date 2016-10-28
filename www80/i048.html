@@ -1,0 +1,183 @@
+<div ng-include src="'menu.html'"></div>
+<div class="i048 i04">
+	<!--商品库表格页面-->
+	<div class="menu_ku" id="menu_ku">
+        <div class="i04_title">新手库</div>
+    <!--搜索栏-->
+        <div class="search">
+            <div class="i04_list search_type" ng-click="showList05()">
+                <span>{{searchTypeKu}}</span>
+                <ul class="i04_show type_list" id="type_list_ku">
+                    <li>商品名称</li>
+                    <li>商品ID</li>
+                    <li>兑换商名称</li>
+                    <li>兑换商ID</li>
+                    <li>商品价格区间</li>
+                </ul>
+            </div>
+            <input type="search" placeholder="输入内容搜索" class="i04_search_box" ng-model="dgt_input" ng-show="searchTypeKu!='商品价格区间'">
+            <div ng-show="searchTypeKu=='商品价格区间'" style="float:left;">
+                <input type="search" class="i04_search_box1" ng-model="goods_input1">
+                <span>-</span>
+                <input type="search" class="i04_search_box2" ng-model="goods_input2">
+            </div>
+            <span class="i04_search_btn" ng-click="dgt_search()">查询</span>
+            <div class="i04_queryall_btn" ng-click="dgt_search_all()">
+                显示全部
+            </div>
+            <div class="i04_big_btn" ng-click="addKu()">
+                修改新手库
+            </div>
+        </div>
+    <!--商品库表格-->
+        <table class="ku_table table-bordered table-striped table-responsive" id="ku_table">
+            <thead>
+                <tr>
+                    <th>修改日期</th>
+                    <th>商品名称</th>
+                    <th>商品ID</th>
+                    <th>商品价格</th>
+                    <th>兑换商名称</th>
+                    <th>兑换商ID</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-show="dgtList.result.length==0">
+                    <td colspan="11">当前无符合条件数据</td>
+                </tr>
+                <tr ng-repeat="x in dgtList.result">
+                    <td>{{x.ut*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+                    <td>{{x.goods_name}}</td>
+                    <td>{{x.goods_id}}</td>
+                    <td>{{x.price}}</td>
+                    <td>{{x.merchant_name}}</td>
+                    <td>{{x.merchant_id}}</td>
+                    <td>
+                        <span class="i40_table_btn" style="color:red;" ng-click="deleteKu(x.goods_id)">移除商品</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--页面跳转栏-->
+        <div class="con">
+            <div class="i04_dol">
+                <div class="i04_list dol_num" ng-click="showList06()">
+                    <span>{{dolListKu}}</span>
+                    <ul class="i04_show dol_list" id="dol_list_ku">
+                        <li ng-click="showList_child(10)">10</li>
+                        <li ng-click="showList_child(30)">30</li>
+                    </ul>
+                </div>
+                <span class="tiao">条</span>
+                <div class="dol_btn" ng-click="export_xlsx()"></div>
+            </div>
+            <div class="i04_change_page">
+                <div class="i04_return_btn" ng-show="dgt_pageNumber!=1" ng-click="dgt_prev()"></div>
+                <div class="i04_return_btn_no" ng-show="dgt_pageNumber==1"></div>
+                <input type="text" ng-model="dgt_pageNumber" class="page">
+                <span>
+                /<span class="page_num">{{dgtList.total_page}}</span>
+                </span>
+                <div class="i04_go_btn" ng-show="dgt_pageNumber<dgtList.total_page" ng-click="dgt_next()"></div>
+                <div class="i04_go_btn_no" ng-show="dgt_pageNumber==dgtList.total_page"></div>
+            </div>
+        </div>
+
+        <div class="i04_remind delete_ku" id="delete_ku_remind">
+            <h3>温馨提示</h3>
+            <p>是否移除该商品？</p>
+            <div class="i04_btn_box">
+                <span class="i04_btn not" ng-click="deleteKuNot()">取消</span>
+                <span class="i04_btn yes" ng-click="deleteKuYes()">确定</span>
+            </div>
+        </div>
+    </div>
+	<!--商品库编辑页面-->
+
+        <!--添加新碎片-->
+        <div class="i04_edit add_new_suipian" id="add_new_suipian">
+            <h2>修改新手库</h2>
+            <div class="search_add_suipian">
+                <div class="i04_list add_suipian_type" ng-click="showList10()">
+                	<span>{{searchTypeSuipian}}</span>
+                    <ul class="i04_show show_add_suipian" id="show_add_suipian">
+                        <li>商品名称</li>
+                        <li>商品ID</li>
+                        <li>兑换商名称</li>
+                        <li>兑换商ID</li>
+                        <li>商品价格区间</li>
+                    </ul>
+                </div>
+                <input type="text" placeholder="输入搜索内容功能" class="i04_search_box search_box_suipian" ng-model="truckListInput" ng-show="searchTypeSuipian!='商品价格区间'">
+                <div ng-show="searchTypeSuipian=='商品价格区间'" style="float:left;">
+                    <input type="search" class="i04_search_box1" ng-model="truckListInput1">
+                    <span>-</span>
+                    <input type="search" class="i04_search_box2" ng-model="truckListInput2">
+                </div>
+                <span class="i04_search_btn search_btn_suipian" ng-click="truckListSearch()">查询</span>
+                <div class="i04_queryall_btn" ng-click="truckListSearch_all()">
+                    显示全部
+                </div>
+            </div>
+            <table class="suipian_table i04_smaller table-bordered table-striped table-responsive" id="seller_edit_table">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>商品ID</th>
+                        <th>商品价格</th>
+                        <th>兑换商名称</th>
+                        <th>兑换商ID</th>
+                        <th>商品选择</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="truckList.result.length==0">
+                        <td colspan="6">当前无符合条件数据</td>
+                    </tr>
+                    <tr ng-repeat="x in truckList.result">
+                        <td>{{x.goods_name}}</td>
+                        <td>{{x.goods_id}}</td>
+                        <td>{{x.price}}</td>
+                        <td>{{x.merchant_name}}</td>
+                        <td>{{x.merchant_id}}</td>
+                        <td>
+                            <label ng-show="x.newh_selected=='true'">已选择</label>
+                            <label ng-show="x.newh_selected=='false'"><input type="checkbox" ng-model="x.truckList_check" ng-change="selectTruck(x)">选择</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="i04_change_page change_page_suipian">
+                <div class="i04_return_btn" ng-show="truckListSearch.pageNumber!=1" ng-click="truckList_prev()"></div>
+                <div class="i04_return_btn_no" ng-show="truckListSearch.pageNumber==1"></div>
+                <input type="text" ng-model="truckListSearch.pageNumber" class="page">
+                <span>
+                /<span class="page_num">{{truckList.total_page}}</span>
+                </span>
+                <div class="i04_go_btn" ng-show="truckListSearch.pageNumber<truckList.total_page" ng-click="truckList_next()"></div>
+                <div class="i04_go_btn_no" ng-show="truckListSearch.pageNumber==truckList.total_page"></div>
+            </div>
+            <div class="i04_btn_box">
+                <span class="i04_btn not" ng-click="giveupAddSuipian()">放弃</span>
+                <span class="i04_btn yes" ng-click="saveAddSuipian()">保存</span>
+            </div>
+            <div class="i04_remind cancel_add_suipian" id="cancel_add_suipian">
+                <h3>温馨提示</h3>
+                <p>是否放弃保存产品信息？</p>
+                <div class="i04_btn_box">
+                    <span class="i04_btn not" ng-click="giveupAddSuipianNot()">取消</span>
+                    <span class="i04_btn yes" ng-click="giveupAddSuipianYes()">确定</span>
+                </div>
+            </div>
+            <div class="i04_remind save_add_suipian" id="save_add_suipian" >
+                <h3>温馨提示</h3>
+                <p>是否确定保存产品信息？</p>
+                <div class="i04_btn_box">
+                    <span class="i04_btn cancel not" ng-click="saveAddSuipianNot()">取消</span>
+                    <span class="i04_btn confirm yes" ng-click="saveAddSuipianYes()">确定</span>
+                </div>
+            </div>
+        </div>
+
+</div>

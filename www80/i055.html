@@ -1,0 +1,90 @@
+<div ng-include src="'menu.html'"></div>
+<div class="i055 i04">
+
+    <!--表格-->
+    <table class="lucky_table table-bordered table-striped table-responsive">
+        <tr class="tr1">
+            <td colspan="6" class="head">每日推送配置</td>
+        </tr>
+        <tr>
+            <th>发布日期</th>
+            <th>发布人员</th>
+            <th>接收平台</th>
+            <th>接收地区</th>
+            <th style="width:250px;">摘要</th>
+            <th>操作</th>
+        </tr>
+        <tr class="tr2">
+            <td colspan="6">当前每日推送信息</td>
+        </tr>
+        <tr ng-show="data.now_push.length==0">
+            <td colspan="6">无每日推送信息</td>
+        </tr>
+        <tr ng-repeat="x in data.now_push">
+            <td>{{x.date*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.receive_platform}}</td>
+            <td>{{x.receive_area}}</td>
+            <td>{{x.content}}</td>
+            <td>
+                <span class="i40_table_btn" ng-click="replace_or_cancel(x.push_id,'cancel','取消当前每日推送')">取消推送</span>
+            </td>
+        </tr>
+        <tr class="tr2">
+            <td colspan="6">当前紧急推送信息</td>
+        </tr>
+        <tr ng-show="data.now_notice.length==0">
+            <td colspan="6">无紧急推送信息</td>
+        </tr>
+        <tr ng-repeat="x in data.now_notice">
+            <td>{{x.date*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.receive_platform}}</td>
+            <td>{{x.receive_area}}</td>
+            <td>{{x.content}}</td>
+            <td>
+                <span class="i40_table_btn" ng-click="replace_or_cancel(x.push_id,'cancel','取消当前紧急推送')">取消推送</span>
+            </td>
+        </tr>
+        <tr class="tr2">
+            <td colspan="6">修改推送信息</td>
+        </tr>
+        <tr ng-show="data.update_push.length==0">
+            <td colspan="6">无修改推送信息</td>
+        </tr>
+        <tr ng-repeat="x in data.update_push">
+            <td>{{x.date*1000 | date:'yyyy-MM-dd HH:mm'}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.receive_platform}}</td>
+            <td>{{x.receive_area}}</td>
+            <td>{{x.content}}</td>
+            <td>
+                <span class="i40_table_btn" ng-click="replace_or_cancel(x.push_id,'replace','替换当前推送')">替换推送</span>
+            </td>
+        </tr>
+    </table>
+    <!--页面跳转栏-->
+    <div class="con">
+        <div class="i04_dol">
+            <div class="i04_list dol_num" ng-click="showList()">
+                <span>{{pushRecord.pageSizeSelect}}</span>
+                <ul class="i04_show dol_list" id="pageSizeSelect">
+                    <li>10</li>
+                    <li>30</li>
+                </ul>
+            </div>
+            <span class="tiao">条</span>
+            <div class="dol_btn" ng-click="export_xlsx()"></div>
+        </div>
+        <div class="i04_change_page">
+            <div class="i04_return_btn" ng-show="pushRecord.pageNum!=1" ng-click="pushRecord_prev()"></div>
+            <div class="i04_return_btn_no" ng-show="pushRecord.pageNum==1"></div>
+            <input type="text" ng-model="pushRecord.pageNum" class="page">
+                <span>
+                /<span class="page_num">{{data.total_page}}</span>
+                </span>
+            <div class="i04_go_btn" ng-show="pushRecord.pageNum<data.total_page" ng-click="pushRecord_next()"></div>
+            <div class="i04_go_btn_no" ng-show="pushRecord.pageNum==data.total_page"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<div ng-include src="'menu.html'"></div>
+
+<div class="i060">
+    <div class="box">
+
+        <div class="input">
+            <div class="subinput">
+                <p>发放因素:</p>
+                <input type="text" ng-model="yuanying">
+            </div>
+            <div class="subinput">
+                <p>发放目标:</p>
+                <div class="select2">
+                    <div class="select1">
+                        <select ng-change="change(x)" ng-model="x">
+                            <option selected="true">全服用户</option>
+                            <option >IOS用户</option>
+                            <option >Android用户</option>
+                            <option >个人</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="subinput" style="width: 330px" ng-show="showUser">
+                <p>用户账号:</p>
+                <input type="text" ng-model="userAccount">
+                <button style="float: right" ng-click="getAccount()">核对账号</button>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+
+
+            <table class="table" style="width: 400px" ng-show="userInfo">
+                <tr>
+                    <th>账号</th>
+                    <th>ID</th>
+                    <th>昵称</th>
+                </tr>
+                <tr style="background-color: #f9f9f9">
+                    <td>{{check_person.phone}}</td>
+                    <td>{{check_person.id}}</td>
+                    <td>{{check_person.name}}</td>
+                </tr>
+            </table>
+
+            <div class="selectBox" style="width: 340px">
+                <div class="select2">
+                    <div class="select1">
+                        <select id="select" ng-click="getDateList()">
+                            <option ng-repeat="item in items" value="{{$index}}">
+                                {{item.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <p>X</p>
+                <button style="float: right;position: relative;" ng-click="addBenefit()">+</button>
+                <input type="number" ng-model="number">
+            </div>
+            <div id="selectBox">
+                <div class="selectBox" ng-repeat="count in benefit" style="width: 340px">
+                    <div class="select2">
+                        <div class="select1">
+                            <select>
+                                <option ng-repeat="item in items" value="{{$index}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p>X</p>
+                    <button style="float: right;position: relative;" ng-click="removeBenefit($index)">-</button>
+                    <input type="number" value="10">
+                </div>
+            </div>
+
+            <button class="subimt" ng-click="submit()">提交</button>
+
+        </div>
+    </div>
+    <div ng-show="input" class="input2">
+        <p>请输入操作密码</p>
+        <input type="password" ng-model="pwd">
+        <button style="margin-right: 10px" ng-click="cancel()">取消</button>
+        <button style="margin-left: 10px" ng-click="enter()">确认</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
