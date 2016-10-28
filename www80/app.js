@@ -133,6 +133,10 @@ iweb.config(['$routeProvider',
 				templateUrl: 'i200.html',
 				controller: 'i200'
 			}).
+			when('/i201', {
+				templateUrl: 'i201.html',
+				controller: 'i201'
+			}).
       		otherwise({
     			redirectTo: '/main'
       		});
