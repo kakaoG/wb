@@ -113,6 +113,10 @@ iweb.config(['$routeProvider',
 					templateUrl: 'i070.html',
 					controller: 'i070'
 				}).
+				when('/i082', {
+					templateUrl: 'i082.html',
+					controller: 'i082'
+				}).
 				when('/i120', {
 					templateUrl: 'i120.html',
 					controller: 'i120'
@@ -132,10 +136,6 @@ iweb.config(['$routeProvider',
 			when('/i200', {
 				templateUrl: 'i200.html',
 				controller: 'i200'
-			}).
-			when('/i201', {
-				templateUrl: 'i201.html',
-				controller: 'i201'
 			}).
       		otherwise({
     			redirectTo: '/main'

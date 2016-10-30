@@ -1,0 +1,11 @@
+.i082 { padding: 60px 50px 0 200px; position: relative;}
+.i082 h5 { font-size: 16px; font-weight: bold;}
+.i082 h4 { margin: 20px 0 30px; font-size: 20px; font-weight: bold;}
+.i082 .time-set .content { margin: 20px 0 50px 100px;}
+.i082 .option-set .option { margin: 20px 100px 0; font-size: 12px;}
+.i082 .option-set .option input[type=checkbox] { width: 20px; height: 20px; vertical-align: bottom; margin-right: 10px;}
+.i082 .option-set .option input[type=text] { width: 80px;}
+.i082 .phone-set { margin-top: 50px;}
+.i082 .phone-set textarea { width: 80%; margin: 20px 0 0 100px;}
+.i082 .footer { margin-top: 40px; text-align: center;}
+.i082 .footer button { padding: 5px 10px; background: #e2443d; color: #fff; border: none; margin-right: 50px;}

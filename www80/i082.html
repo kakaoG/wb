@@ -1,0 +1,61 @@
+<div ng-include src="'menu.html'"></div>
+<div class="i082">
+    <h4>预计设置</h4>
+    <div class="time-set">
+        <h5>每日预警简报(设置后将每日定时发送预警简报短信)：</h5>
+        <div class="content">
+            <span>选择定时发送时间：</span>
+            <select  id="hour" ng-model="HH">
+                <option value="">-- 请选择 --</option>
+                <option value="{{o}}" ng-repeat="o in optData1">{{o}}</option>
+            </select>时
+            <select  id="mil" ng-model="MM">
+                <option value="">-- 请选择 --</option>
+                <option value="{{o}}" ng-repeat="o in optData2">{{o}}</option>
+            </select>分
+        </div>
+    </div>
+    <div class="option-set">
+        <h5>自定义预警项(设置后当达到预警条件将发送预警短信)：</h5>
+
+        <div class="option op1"><input type="checkbox"/>当行为池价值低于风险值时，发短信【行为池已达到风险值——行为池当前值：XXX，请及时处理】</div>
+        <div class="option op2"><input type="checkbox"/>当盈亏池价值低于风险值时，发短信【盈亏池已达到风险值——行为池当前值：XXX，请及时处理】</div>
+        <div class="option op3"><input type="checkbox"/>当日常商品库中的物品的任意碎片个数低于风险值时，发送短信【日常商品库中—XXXXXX—M号碎片剩余NNNN，已达到风险值，请及时处理】</div>
+        <div class="option op4"><input type="checkbox"/>当5号碎片异常预警信息每生成<input type="text"/>时,发送短信【5号碎片异常提醒，请及时处理】</div>
+        <div class="option op5"><input type="checkbox"/>当KO币异常预警信息每生成<input type="text" />条，发送短信【KO币异常提醒，请及时处理】</div>
+        <div class="option op6"><input type="checkbox"/>当兑换异常预警信息每生成<input type="text" />条，发送短信【兑换异常提醒，请及时处理】</div>
+    </div>
+    <div class="phone-set">
+        <h5>设置手机账号(设置后预警简报/短信将发送至下方所有手机用户，输入时用逗号隔开可添加多个号码)：</h5>
+        <textarea id="phone" cols="30" rows="10" placeholder="手机账号输入框，用逗号隔开可添加多个号码"></textarea>
+    </div>
+    <div class="footer">
+        <button id="reset" ng-click="reset()">重新设定</button>
+        <button id="save" ng-click="save()">保存设置</button>
+    </div>
+
+    <div class="alert1 modal">
+        <div class="modal-header">
+            <h3>温馨提示</h3>
+        </div>
+        <div class="modal-body">
+            <p>请完善所勾选的预警项信息</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-success">确认</a>
+        </div>
+    </div>
+    <div class="alert2 modal hide fade in">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>温馨提示</h3>
+        </div>
+        <div class="modal-body">
+            <p>是否确认提交该设置</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">取消</a>
+            <a href="#" class="btn btn-success">确认</a>
+        </div>
+    </div>
+</div>
