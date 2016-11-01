@@ -9,3 +9,7 @@
 .i082 .phone-set textarea { width: 80%; margin: 20px 0 0 100px;}
 .i082 .footer { margin-top: 40px; text-align: center;}
 .i082 .footer button { padding: 5px 10px; background: #e2443d; color: #fff; border: none; margin-right: 50px;}
+
+.i082 .modal .modal-dialog { width: 400px; margin-left: -200px; left: 50%; text-align: center;}
+.i082 .modal .modal-dialog .modal-content>div { border: none;}
+.i082 .modal .modal-footer { text-align: center;}

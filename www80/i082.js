@@ -9,7 +9,7 @@ iweb.controller('i082', function ($scope,$filter) {
         $scope.optData2.push(y);
     }
 
-    $scope.save11 = function () {
+    $scope.save = function () {
         //$(".alert1").modal("show");
         $(".alert2").modal("show");
     }
